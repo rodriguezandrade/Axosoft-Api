@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SS.Mvc</name>
+    </assembly>
+    <members>
+        <member name="T:SS.Mvc.ControllerBase">
+            <summary>
+            Modifies the JSON responses using <see cref="T:Newtonsoft.Json.JsonSerializer"/>.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.ControllerBase.Json(System.Object,System.String,System.Text.Encoding,System.Web.Mvc.JsonRequestBehavior)">
+            <summary>
+            Creates a <see cref="T:System.Web.Mvc.JsonResult"/> object that serializes the specified object to JavaScript Object Notation (JSON) format using the content type, content encoding, and the JSON request behavior.
+            </summary>
+            <param name="data">The JavaScript object graph to serialize.</param>
+            <param name="contentType">The content type (MIME type).</param>
+            <param name="contentEncoding">The content encoding.</param>
+            <param name="behavior">The JSON request behavior</param>
+            <returns>
+            The result object that serializes the specified object to JSON format.
+            </returns>
+        </member>
+        <member name="M:SS.Mvc.ControllerBase.Json(System.Object,System.String,System.Text.Encoding,System.Web.Mvc.JsonRequestBehavior,System.Collections.Generic.IEnumerable{Newtonsoft.Json.JsonConverter})">
+            <summary>
+            Creates a <see cref="T:System.Web.Mvc.JsonResult"/> object that serializes the specified object to JavaScript Object Notation (JSON) format using the content type, content encoding, and the JSON request behavior.
+            </summary>
+            <param name="data">The JavaScript object graph to serialize.</param>
+            <param name="contentType">The content type (MIME type).</param>
+            <param name="contentEncoding">The content encoding.</param>
+            <param name="behavior">The JSON request behavior</param>
+            <param name="converters">An optional collection of <see cref="T:Newtonsoft.Json.JsonConverter"/> objects to be passed to the JSON serializer.</param>
+            <returns>
+            The result object that serializes the specified object to JSON format.
+            </returns>
+        </member>
+        <member name="T:SS.Mvc.CustomJsonResult">
+            <summary>
+            Extends the default <see cref="T:System.Web.Mvc.JsonResult" /> to use the <see cref="T:Newtonsoft.Json.JsonConvert" /> serializer.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.CustomJsonResult.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Mvc.CustomJsonResult"/> class.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.CustomJsonResult.#ctor(System.Collections.Generic.IEnumerable{Newtonsoft.Json.JsonConverter})">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Mvc.CustomJsonResult"/> class.
+            </summary>
+            <param name="converters">An optional list of JSON converters to be used in the serialization process.</param>
+        </member>
+        <member name="P:SS.Mvc.CustomJsonResult.CustomIeHeaderName">
+            <summary>
+            Gets or sets the name of the header used to determine whether or not the JSON string should
+            be wrapped in a &lt;textarea&gt; tag (for Internet Explorer 8 or earlier).
+            </summary>
+            <value>
+            The name of the custom IE header.
+            </value>
+        </member>
+        <member name="M:SS.Mvc.CustomJsonResult.ExecuteResult(System.Web.Mvc.ControllerContext)">
+            <summary>
+            Enables processing of the result of an action method by a custom type that inherits from the <see cref="T:System.Web.Mvc.ActionResult"/> class.
+            </summary>
+            <param name="context">The context within which the result is executed.</param>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="context"/> parameter is null.</exception>
+        </member>
+        <member name="T:SS.Mvc.CustomJsonSerializer">
+            <summary>
+            Wrapper for the <see cref="T:Newtonsoft.Json.JsonSerializer"/>.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.CustomJsonSerializer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Mvc.CustomJsonSerializer"/> class.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.CustomJsonSerializer.#ctor(System.Collections.Generic.IEnumerable{Newtonsoft.Json.JsonConverter})">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Mvc.CustomJsonSerializer"/> class using the specified list of <see cref="T:Newtonsoft.Json.JsonConverter"/> objects.
+            </summary>
+            <param name="converters">The converters.</param>
+        </member>
+        <member name="P:SS.Mvc.CustomJsonSerializer.Default">
+            <summary>
+            Gets the default instance of <see cref="T:Newtonsoft.Json.JsonSerializer"/>.
+            </summary>
+            <value>
+            The default.
+            </value>
+        </member>
+        <member name="P:SS.Mvc.CustomJsonSerializer.Settings">
+            <summary>
+            Gets the <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/> to use with the <see cref="T:Newtonsoft.Json.JsonSerializer"/>.
+            </summary>
+            <value>
+            The settings.
+            </value>
+        </member>
+        <member name="M:SS.Mvc.CustomJsonSerializer.Serialize(System.Object)">
+            <summary>
+            Serializes the specified object.
+            </summary>
+            <param name="obj">The object to be serialized.</param>
+        </member>
+        <member name="M:SS.Mvc.CustomJsonSerializer.SerializeHtml(System.Object)">
+            <summary>
+            Serializes the specified object into an <see cref="T:System.Web.IHtmlString" />. This method is to be used inside Razor views.
+            </summary>
+            <param name="obj">The object to be serialized.</param>
+        </member>
+        <member name="T:SS.Mvc.Filters.AjaxOnlyAttribute">
+            <summary>
+            Represents an attribute that is used to restrict an action method so that the method handles only AJAX requests.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Filters.AjaxOnlyAttribute.IsValidForRequest(System.Web.Mvc.ControllerContext,System.Reflection.MethodInfo)">
+            <summary>
+            Determines whether the action method selection is valid for the specified controller context.
+            </summary>
+            <param name="controllerContext">The controller context.</param>
+            <param name="methodInfo">Information about the action method.</param>
+            <returns>
+            true if the action method selection is valid for the specified controller context; otherwise, false.
+            </returns>
+        </member>
+        <member name="T:SS.Mvc.Filters.CustomRequireHttpsAttribute">
+            <summary>
+            Represents an attribute that forces an unsecured HTTP request to be re-sent over HTTPS only on non-local requests.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Filters.CustomRequireHttpsAttribute.HandleNonHttpsRequest(System.Web.Mvc.AuthorizationContext)">
+            <summary>
+            Handles unsecured HTTP requests that are sent to the action method.
+            </summary>
+            <param name="filterContext">An object that encapsulates information that is required in order to use the <see cref="T:System.Web.Mvc.RequireHttpsAttribute"/> attribute.</param>
+            <exception cref="T:System.InvalidOperationException">The HTTP request contains an invalid transfer method override. All GET requests are considered invalid.</exception>
+        </member>
+        <member name="T:SS.Mvc.Filters.NonNullableParametersAttribute">
+            <summary>
+            Validates that all values for non-nullable primitive parameters of an action method are present in the request.
+            If all required values are present and valid, the action is executed.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Filters.NonNullableParametersAttribute.IsValidForRequest(System.Web.Mvc.ControllerContext,System.Reflection.MethodInfo)">
+            <summary>
+            Determines whether the action method selection is valid for the specified controller context.
+            </summary>
+            <param name="controllerContext">The controller context.</param>
+            <param name="methodInfo">Information about the action method.</param>
+            <returns>
+            true if the action method selection is valid for the specified controller context; otherwise, false.
+            </returns>
+        </member>
+        <member name="T:SS.Mvc.Filters.SsHandleErrorAttribute">
+            <summary>
+            Description of SsHandleErrorAttribute.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.MvcExtensions.If(System.Web.Mvc.MvcHtmlString,System.Boolean,System.Web.Mvc.MvcHtmlString)">
+            <summary>
+            Extension on any Html helper, you can insert condition when to render certain helper.
+            </summary>
+            <param name="value">Helper</param>
+            <param name="evaluation">Condition</param>
+            <param name="falseValue">If condition is not met, render falseValue. If null nothing renders.</param>
+            <returns></returns>
+        </member>
+        <member name="T:SS.Mvc.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Properties.Resources.RecaptchaInvalidChallenge">
+            <summary>
+              Looks up a localized string similar to Invalid reCAPTCHA request. Missing challenge value..
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Properties.Resources.RecaptchaInvalidIpAddress">
+            <summary>
+              Looks up a localized string similar to Expecting an IP address, got {0}..
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Properties.Resources.RecaptchaInvalidResponse">
+            <summary>
+              Looks up a localized string similar to Invalid reCAPTCHA request. Missing response value..
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Properties.Resources.RecaptchaInvalidSolution">
+            <summary>
+              Looks up a localized string similar to The verification words are incorrect..
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Properties.Resources.RecaptchaNotReachable">
+            <summary>
+              Looks up a localized string similar to The reCAPTCHA server is unavailable..
+            </summary>
+        </member>
+    </members>
+</doc>

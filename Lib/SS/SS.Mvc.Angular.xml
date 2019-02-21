@@ -1,0 +1,1329 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SS.Mvc.Angular</name>
+    </assembly>
+    <members>
+        <member name="T:SS.Mvc.Angular.AngularBindingContext">
+            <summary>
+            Represents the base class for AngularJS binding contexts.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Mvc.Angular.AngularBindingContext"/> class.
+            </summary>
+            <param name="prefix">The name of the model in the scope.</param>
+        </member>
+        <member name="P:SS.Mvc.Angular.AngularBindingContext.Prefix">
+            <summary>
+            Gets the name of the model in the scope.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext.GetPropertyPrefix(System.String)">
+            <summary>
+            Gets a string used to prefix properties for bindings.
+            </summary>
+            <param name="delimiter">The property delimiter.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext.CreateHtmlAttribute(System.String,System.String)">
+            <summary>
+            Creates an HTML attribute from the name and value provided.
+            </summary>
+            <param name="name">The attribute name.</param>
+            <param name="value">The attribute value.</param>
+        </member>
+        <member name="T:SS.Mvc.Angular.AngularBindingContext`1">
+            <summary>
+            Generic AngularJS binding context that can be used to generate bindings.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+        </member>
+        <member name="P:SS.Mvc.Angular.AngularBindingContext`1.Helper">
+            <summary>
+            Gets HtmlHelper instance that this context is using.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext`1.NameFor``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Gets the full HTML field name for the object that is represented by the expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the name.</param>
+            <returns>The full HTML field name for the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext`1.PropertyNameFor``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Gets the client-side property name for the object that is represented by the expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the name.</param>
+            <returns>The client-side property name for the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext`1.DisplayFor``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Gets the display name for the model.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the display name.</param>
+            <returns>The display name for the model.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext`1.Interpolate``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Generates an interpolated AngularJS binding for the specified property.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the property to interpolate.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext`1.Interpolate``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.String)">
+            <summary>
+            Generates an interpolated AngularJS binding for the specified property.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the property to interpolate.</param>
+            <param name="filter">An optional filter to add to the interpolation.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext`1.Interpolate``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            Generates an interpolated AngularJS binding for the specified property.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the property to interpolate.</param>
+            <param name="oneTimeBinding">if set to <c>true</c>, interpolation is rendered as a one time binding.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext`1.Interpolate``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,System.String)">
+            <summary>
+            Generates an interpolated AngularJS binding for the specified property.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the property to interpolate.</param>
+            <param name="oneTimeBinding">if set to <c>true</c>, interpolation is rendered as a one time binding.</param>
+            <param name="filter">An optional filter to add to the interpolation.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext`1.NgBind``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Generates an ng-bind directive attribute for the specified property.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the property to bind.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext`1.NgBind``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.String)">
+            <summary>
+            Generates an ng-bind directive attribute for the specified property.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the property to bind.</param>
+            <param name="filter">An optional filter to add to the binding.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext`1.NgBind``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            Generates an ng-bind directive attribute for the specified property.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the property to bind.</param>
+            <param name="oneTimeBinding">if set to <c>true</c>, interpolation is rendered as a one time binding.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext`1.NgBind``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean,System.String)">
+            <summary>
+            Generates an ng-bind directive attribute for the specified property.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the property to bind.</param>
+            <param name="oneTimeBinding">if set to <c>true</c>, interpolation is rendered as a one time binding.</param>
+            <param name="filter">An optional filter to add to the binding.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext`1.NgBindHtml``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Generates an ng-bind-html directive attribute for the specified property.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the property to bind.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext`1.NgBindHtml``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            Generates an ng-bind-html directive attribute for the specified property.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the property to bind.</param>
+            <param name="oneTimeBinding">if set to <c>true</c>, interpolation is rendered as a one time binding.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext`1.Repeat``1(System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.IEnumerable{``0}}})">
+            <summary>
+            Creates a new repeat context for the specified property. This context can be used to render the ng-repeat directive and create bindings for the ng-repeat item.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+            <param name="listExpression">An expression that identifies the property to iterate.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingContext`1.ConvertExpression``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Converts the expression that identifies a property into its client-side repesentration.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the property.</param>
+        </member>
+        <member name="T:SS.Mvc.Angular.AngularBindingSubcontext`1">
+            <summary>
+            Represents an AngularJS subcontext, such as a repeat context.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+        </member>
+        <member name="P:SS.Mvc.Angular.AngularBindingSubcontext`1.Item">
+            <summary>
+            Gets the name of the context item.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.AngularBindingSubcontext`1.Subexpression">
+            <summary>
+            Gets the AngularJS model expression for this subcontext.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingSubcontext`1.GetPropertyPrefix(System.String)">
+            <summary>
+            Gets a string used to prefix properties for bindings.
+            </summary>
+            <param name="delimiter">The property delimiter.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularBindingSubcontext`1.RenderDirective">
+            <summary>
+            Renders the AngularJS directive that corresponds to this subcontext.
+            </summary>
+        </member>
+        <member name="T:SS.Mvc.Angular.AngularConfiguration">
+            <summary>
+            Contains configuration values.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.AngularConfiguration.ErrorCssClass">
+            <summary>
+            Gets or sets the name of the CSS class to use for validation errors.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.AngularConfiguration.LabelCssClass">
+            <summary>
+             Gets or sets the name of the CSS class to use for HTML label elements.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.AngularConfiguration.HelpCssClass">
+            <summary>
+            Gets or sets the name of the CSS class to use for validation message elements.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.AngularConfiguration.RequiredLabelCssClass">
+            <summary>
+            Gets or sets the name of the CSS class to add on labels for fields that are required.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.AngularConfiguration.DefaultControlValidationMode">
+            <summary>
+            Gets or sets the default control validation mode for controls inside form elements.
+            </summary>
+            <value>
+            The default control validation mode.
+            </value>
+            <remarks>
+            This value will affect the way in which the <see cref="M:SS.Mvc.Angular.AngularForm`1.NgClassError``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})"/> method
+            renders the ng-class directive.
+            </remarks>
+        </member>
+        <member name="T:SS.Mvc.Angular.ValidationMode">
+            <summary>
+            Specifies when to show the validation messages for a field.
+            </summary>
+        </member>
+        <member name="F:SS.Mvc.Angular.ValidationMode.FormDirty">
+            <summary>
+            Validations are shown when the any control in the form is modified.
+            </summary>
+        </member>
+        <member name="F:SS.Mvc.Angular.ValidationMode.ControlDirty">
+            <summary>
+            Validations are shown for each individual control when it is modified.
+            </summary>
+        </member>
+        <member name="F:SS.Mvc.Angular.ValidationMode.FormSubmitted">
+            <summary>
+            Validations are shown after the user tries to submit the form
+            </summary>
+        </member>
+        <member name="F:SS.Mvc.Angular.ValidationMode.Always">
+            <summary>
+            Validations are always displayed.
+            </summary>
+        </member>
+        <member name="T:SS.Mvc.Angular.AngularForm`1">
+            <summary>
+            Represents an HTML form element in an MVC view that contains AngularJS bindings.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+        </member>
+        <member name="P:SS.Mvc.Angular.AngularForm`1.ValidationMode">
+            <summary>
+            Gets or sets the form's validation mode.
+            </summary>
+            <value>
+            The validation mode.
+            </value>
+        </member>
+        <member name="P:SS.Mvc.Angular.AngularForm`1.Name">
+            <summary>
+            Gets the name of this form.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.AngularForm`1.SubmitMethod">
+            <summary>
+            Gets the submit method for this form.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.AngularForm`1.TagName">
+            <summary>
+            Gets the HTML tag name used to render this form.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.CheckBox``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Returns a check box input element for each property in the object that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to display.</param>
+            <returns>An HTML input element whose type attribute is set to "checkbox" for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.CheckBox``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Object)">
+            <summary>
+            Returns a check box input element for each property in the object that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to display.</param>
+            <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+            <returns>An HTML input element whose type attribute is set to "checkbox" for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.CheckBox``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Returns a check box input element for each property in the object that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to display.</param>
+            <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+            <returns>An HTML input element whose type attribute is set to "checkbox" for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Dispose">
+            <summary>
+            Releases all resources that are used by the current instance of the <see cref="T:SS.Mvc.Angular.AngularForm`1"/> class.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Dropdown``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.String)">
+            <summary>
+            Returns an HTML select element for each property in the object that is represented by the specified expression using the specified list items.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to display.</param>
+            <param name="ngOptions">The ng-options directive binding.</param>
+            <returns>An HTML select element for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Dropdown``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.String,System.String)">
+            <summary>
+            Returns an HTML select element for each property in the object that is represented by the specified expression using the specified list items.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to display.</param>
+            <param name="ngOptions">The ng-options directive binding.</param>
+            <param name="emptyElementText">The text to display when no value is selected.</param>
+            <returns>An HTML select element for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Dropdown``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.String,System.Object)">
+            <summary>
+            Returns an HTML select element for each property in the object that is represented by the specified expression using the specified list items.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to display.</param>
+            <param name="ngOptions">The ng-options directive binding.</param>
+            <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+            <returns>An HTML select element for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Dropdown``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Returns an HTML select element for each property in the object that is represented by the specified expression using the specified list items.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to display.</param>
+            <param name="ngOptions">The ng-options directive binding.</param>
+            <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+            <returns>An HTML select element for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Dropdown``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.String,System.String,System.Object)">
+            <summary>
+            Returns an HTML select element for each property in the object that is represented by the specified expression using the specified list items.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to display.</param>
+            <param name="ngOptions">The ng-options directive binding.</param>
+            <param name="emptyElementText">The text to display when no value is selected.</param>
+            <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+            <returns>An HTML select element for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Dropdown``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Returns an HTML select element for each property in the object that is represented by the specified expression using the specified list items.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to display.</param>
+            <param name="ngOptions">The ng-options directive binding.</param>
+            <param name="emptyElementText">The text to display when no value is selected.</param>
+            <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+            <returns>An HTML select element for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Hidden(System.Object)">
+            <summary>
+            Returns a hidden input element the HTML attributes.
+            </summary>
+            <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+            <returns>An input element whose type attribute is set to "hidden".</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Hidden(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Returns a hidden input element the HTML attributes.
+            </summary>
+            <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+            <returns>An input element whose type attribute is set to "hidden".</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Hidden``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Returns an HTML hidden input element for each property in the object that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the property to display.</param>
+            <returns>An input element whose type attribute is set to "hidden" for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Hidden``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Object)">
+            <summary>
+            Returns an HTML hidden input element for each property in the object that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the property to display.</param>
+            <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+            <returns>An input element whose type attribute is set to "hidden" for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Hidden``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Returns an HTML hidden input element for each property in the object that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the property to display.</param>
+            <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+            <returns>An input element whose type attribute is set to "hidden" for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Label``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Returns an HTML label element and the property name of the property that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the property to display.</param>
+            <returns>An HTML label element and the property name of the property that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Label``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Object)">
+            <summary>
+            Returns an HTML label element and the property name of the property that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the property to display.</param>
+            <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+            <returns>An HTML label element and the property name of the property that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Label``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Returns an HTML label element and the property name of the property that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the property to display.</param>
+            <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+            <returns>An HTML label element and the property name of the property that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Custom``1(System.String,System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Returns an HTML label element and the property name of the property that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="tagName">The custom tag name.</param>
+            <param name="expression">An expression that identifies the property to display.</param>
+            <returns>A custom HTML element for each property in the object that is represented by the expression.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="tagName"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="tagName"/> is not a valid HTML tag name.</exception>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Custom``1(System.String,System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Object)">
+            <summary>
+            Returns an HTML label element and the property name of the property that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="tagName">The custom tag name.</param>
+            <param name="expression">An expression that identifies the property to display.</param>
+            <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+            <returns>A custom HTML element for each property in the object that is represented by the expression.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="tagName"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="tagName"/> is not a valid HTML tag name.</exception>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Custom``1(System.String,System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Returns an HTML label element and the property name of the property that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="tagName">The custom tag name.</param>
+            <param name="expression">An expression that identifies the property to display.</param>
+            <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+            <returns>A custom HTML element for each property in the object that is represented by the expression.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="tagName"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="tagName"/> is not a valid HTML tag name.</exception>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.NgClassError``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Retrieves the validation metadata for the specified expression and generates an ng-class directive that applies an error for each validation rule.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.NgClassError``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},SS.Mvc.Angular.ValidationMode)">
+            <summary>
+            Retrieves the validation metadata for the specified expression and generates an ng-class directive that applies an error for each validation rule.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+            <param name="validationMode">A value that indicates when the validation element should become visible.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Password(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+            <summary>
+            Returns a password input element for each property in the object that is represented by the specified expression.
+            </summary>
+            <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+            <returns>An HTML input element whose type attribute is set to "password" for each property in the object that is represented by the specified expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Password(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Object)">
+            <summary>
+            Returns a password input element for each property in the object that is represented by the specified expression.
+            </summary>
+            <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+            <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+            <returns>An HTML input element whose type attribute is set to "password" for each property in the object that is represented by the specified expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Password(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Returns a password input element for each property in the object that is represented by the specified expression.
+            </summary>
+            <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+            <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+            <returns>An HTML input element whose type attribute is set to "password" for each property in the object that is represented by the specified expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.RadioButton``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Returns a radio button input element for each property in the object that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+            <returns>An HTML input element whose type attribute is set to "radio" for each property in the object that is represented by the specified expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.RadioButton``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Object)">
+            <summary>
+            Returns a radio button input element for each property in the object that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+            <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+            <returns>An HTML input element whose type attribute is set to "radio" for each property in the object that is represented by the specified expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.RadioButton``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Returns a radio button input element for each property in the object that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+            <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+            <returns>An HTML input element whose type attribute is set to "radio" for each property in the object that is represented by the specified expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.TextArea``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Returns an HTML textarea element for each property in the object that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+            <returns>An HTML textarea element for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.TextArea``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Object)">
+            <summary>
+            Returns an HTML textarea element for each property in the object that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+            <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+            <returns>An HTML textarea element for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.TextArea``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Returns an HTML textarea element for each property in the object that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+            <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+            <returns>An HTML textarea element for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.TextBox``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Returns a text input element for each property in the object that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to display.</param>
+            <returns>An HTML input element whose type attribute is set to "text" for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.TextBox``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Object)">
+            <summary>
+            Returns a text input element for each property in the object that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to display.</param>
+            <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+            <returns>An HTML input element whose type attribute is set to "text" for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.TextBox``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Returns a text input element for each property in the object that is represented by the specified expression.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to display.</param>
+            <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+            <returns>An HTML input element whose type attribute is set to "text" for each property in the object that is represented by the expression.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.ValidationsFor``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Retrieves the validation metadata for the specified model and generates an HTML span element with AngularJS bindings for each validation rule.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.ValidationsFor``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},SS.Mvc.Angular.ValidationMode)">
+            <summary>
+            Retrieves the validation metadata for the specified model and generates an HTML span element with AngularJS bindings for each validation rule.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+            <param name="validationMode">A value that indicates that the element should become visible only if the field has been modified.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.ValidationsFor``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},SS.Mvc.Angular.ValidationMode,System.Object)">
+            <summary>
+            Retrieves the validation metadata for the specified model and generates an HTML span element with AngularJS bindings for each validation rule.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+            <param name="validationMode">A value that indicates that the element should become visible only if the field has been modified.</param>
+            <param name="htmlAttributes">An object that contains the HTML attributes for the element.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.ValidationsFor``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},SS.Mvc.Angular.ValidationMode,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Retrieves the validation metadata for the specified model and generates an HTML span element with AngularJS bindings for each validation rule.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+            <param name="validationMode">A value that indicates that the element should become visible only if the field has been modified.</param>
+            <param name="htmlAttributes">A dictionary that contains the HTML attributes for the element.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularForm`1.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="T:SS.Mvc.Angular.AngularExtensions">
+            <summary>
+            Extends the <see cref="T:System.Web.Mvc.HtmlHelper`1" /> class to create AngularJS bindings.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularExtensions.BeginAngularForm``1(System.Web.Mvc.HtmlHelper{``0})">
+            <summary>
+            Creates a new AngularForm object and writes the opening &lt;form&gt; tag to the response.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+            <param name="helper">The HTML helper instance that this method extends.</param>
+            <returns>A new AngularForm object.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularExtensions.BeginAngularForm``1(System.Web.Mvc.HtmlHelper{``0},System.String)">
+            <summary>
+            Creates a new AngularForm object and writes the opening &lt;form&gt; tag to the response.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+            <param name="helper">The HTML helper instance that this method extends.</param>
+            <param name="name">The name of the form.</param>
+            <returns>A new AngularForm object.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularExtensions.BeginAngularForm``1(System.Web.Mvc.HtmlHelper{``0},System.String,System.String)">
+            <summary>
+            Creates a new AngularForm object and writes the opening &lt;form&gt; tag to the response.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+            <param name="helper">The HTML helper instance that this method extends.</param>
+            <param name="name">The name of the form.</param>
+            <param name="submitMethod">The name of the scope method that will be invoked when the form is submitted.</param>
+            <returns>A new AngularForm object.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularExtensions.BeginAngularForm``1(System.Web.Mvc.HtmlHelper{``0},System.String,System.Object)">
+            <summary>
+            Creates a new AngularForm object and writes the opening &lt;form&gt; tag to the response.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+            <param name="helper">The HTML helper instance that this method extends.</param>
+            <param name="name">The name of the form.</param>
+            <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+            <returns>A new AngularForm object.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularExtensions.BeginAngularForm``1(System.Web.Mvc.HtmlHelper{``0},System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Creates a new AngularForm object and writes the opening &lt;form&gt; tag to the response.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+            <param name="helper">The HTML helper instance that this method extends.</param>
+            <param name="name">The name of the form.</param>
+            <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+            <returns>A new AngularForm object.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularExtensions.BeginAngularForm``1(System.Web.Mvc.HtmlHelper{``0},System.String,System.String,System.Object)">
+            <summary>
+            Creates a new AngularForm object and writes the opening &lt;form&gt; tag to the response.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+            <param name="helper">The HTML helper instance that this method extends.</param>
+            <param name="name">The name of the form.</param>
+            <param name="submitMethod">The name of the scope method that will be invoked when the form is submitted.</param>
+            <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+            <returns>A new AngularForm object.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularExtensions.BeginAngularForm``1(System.Web.Mvc.HtmlHelper{``0},System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Creates a new AngularForm object and writes the opening &lt;form&gt; tag to the response.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+            <param name="helper">The HTML helper instance that this method extends.</param>
+            <param name="name">The name of the form.</param>
+            <param name="submitMethod">The name of the scope method that will be invoked when the form is submitted.</param>
+            <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+            <returns>A new AngularForm object.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularExtensions.BeginAngularForm``1(System.Web.Mvc.HtmlHelper{``0},System.String,System.String,System.String)">
+            <summary>
+            Creates a new AngularForm object and writes the opening &lt;form&gt; tag to the response.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+            <param name="helper">The HTML helper instance that this method extends.</param>
+            <param name="name">The name of the form.</param>
+            <param name="submitMethod">The name of the scope method that will be invoked when the form is submitted.</param>
+            <param name="prefix">The name of the model in the scope.</param>
+            <returns>A new AngularForm object.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularExtensions.BeginAngularForm``1(System.Web.Mvc.HtmlHelper{``0},System.String,System.String,System.String,System.Object)">
+            <summary>
+            Creates a new AngularForm object and writes the opening &lt;form&gt; tag to the response.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+            <param name="helper">The HTML helper instance that this method extends.</param>
+            <param name="name">The name of the form.</param>
+            <param name="submitMethod">The name of the scope method that will be invoked when the form is submitted.</param>
+            <param name="prefix">The name of the model in the scope.</param>
+            <param name="htmlAttributes">An object that contains the HTML attributes to set for the element.</param>
+            <returns>A new AngularForm object.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularExtensions.BeginAngularForm``1(System.Web.Mvc.HtmlHelper{``0},System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Creates a new AngularForm object and writes the opening &lt;form&gt; tag to the response.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+            <param name="helper">The HTML helper instance that this method extends.</param>
+            <param name="name">The name of the form.</param>
+            <param name="submitMethod">The name of the scope method that will be invoked when the form is submitted.</param>
+            <param name="prefix">The name of the model in the scope.</param>
+            <param name="htmlAttributes">A dictionary that contains the HTML attributes to set for the element.</param>
+            <returns>A new AngularForm object.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularExtensions.CreateAngularContext``1(System.Web.Mvc.HtmlHelper{``0})">
+            <summary>
+            Creates a new AngularBindingContext that can be used to generate AngularJS bindings.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+            <param name="helper">The HTML helper instance that this method extends.</param>
+            <returns>A new AngularBindingContext</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularExtensions.CreateAngularContext``1(System.Web.Mvc.HtmlHelper{``0},System.String)">
+            <summary>
+            Creates a new AngularBindingContext that can be used to generate AngularJS bindings.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+            <param name="helper">The HTML helper instance that this method extends.</param>
+            <param name="prefix">The name of the model in the scope.</param>
+            <returns>A new AngularBindingContext</returns>
+        </member>
+        <member name="T:SS.Mvc.Angular.AngularTagBuilder">
+            <summary>
+            A simplified version of the <see cref="T:System.Web.Mvc.TagBuilder" /> class. It supports empty attributes.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularTagBuilder.#ctor(System.String)">
+            <summary>
+            Creates a new tag that has the specified tag name.
+            </summary>
+            <param name="tagName">The tag name without the "&lt;", "/", or "&gt;" delimiters.</param>
+            <exception cref="T:System.ArgumentException">tagName is null or empty.</exception>
+        </member>
+        <member name="P:SS.Mvc.Angular.AngularTagBuilder.Attributes">
+            <summary>
+            Gets the collection of attributes.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.AngularTagBuilder.InnerHtml">
+            <summary>
+            Gets or sets the inner HTML value for the element.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.AngularTagBuilder.TagName">
+            <summary>
+            Gets the tag name for this tag.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularTagBuilder.AddCssClass(System.String)">
+            <summary>
+            Adds a CSS class to the list of CSS classes in the tag.
+            </summary>
+            <param name="value">The CSS class to add.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularTagBuilder.MergeAttribute(System.String,System.String)">
+            <summary>
+            Adds a new attribute to the tag.
+            </summary>
+            <param name="key">The key for the attribute.</param>
+            <param name="value">The value of the attribute.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularTagBuilder.MergeAttribute(System.String,System.String,System.Boolean)">
+            <summary>
+            Adds a new attribute to the tag.
+            </summary>
+            <param name="key">The key for the attribute.</param>
+            <param name="value">The value of the attribute.</param>
+            <param name="replaceExisting"><c>true</c> to replace an existing attribute if an attribute exists that has the
+                specified key value, or <c>false</c> to leave the original attribute unchanged.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularTagBuilder.MergeAttributes``2(System.Collections.Generic.IDictionary{``0,``1})">
+            <summary>
+            Adds new attributes to the tag.
+            </summary>
+            <typeparam name="TKey">The type of the key object.</typeparam>
+            <typeparam name="TValue">The type of the value object.</typeparam>
+            <param name="attributes">The collection of attributes to add.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularTagBuilder.MergeAttributes``2(System.Collections.Generic.IDictionary{``0,``1},System.Boolean)">
+            <summary>
+            Adds new attributes to the tag.
+            </summary>
+            <typeparam name="TKey">The type of the key object.</typeparam>
+            <typeparam name="TValue">The type of the value object.</typeparam>
+            <param name="attributes">The collection of attributes to add.</param>
+            <param name="replaceExisting"><c>true</c> to replace an existing attribute if an attribute exists that has the
+                specified key value, or <c>false</c> to leave the original attribute unchanged.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularTagBuilder.SetInnerText(System.String)">
+            <summary>
+            Sets the System.Web.Mvc.TagBuilder.InnerHtml property of the element to an HTML-encoded version of the specified string.
+            </summary>
+            <param name="innerText">The string to HTML-encode.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularTagBuilder.ToHtmlString(System.Web.Mvc.TagRenderMode)">
+            <summary>
+            Converts this tag to its HTML string representation.
+            </summary>
+            <param name="renderMode">The render mode.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularTagBuilder.ToString">
+            <summary>
+            Renders the element as a <see cref="F:System.Web.Mvc.TagRenderMode.Normal"/> element.
+            </summary>
+            <returns>
+            The rendered HTML tag.
+            </returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.AngularTagBuilder.ToString(System.Web.Mvc.TagRenderMode)">
+            <summary>
+            Renders the HTML tag by using the specified render mode.
+            </summary>
+            <param name="renderMode">The render mode.</param>
+            <returns>
+            The rendered HTML tag.
+            </returns>
+        </member>
+        <member name="T:SS.Mvc.Angular.AttributeValuePair">
+            <summary>
+            Represents an HTML attribute and its value.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.AttributeValuePair.#ctor(System.String,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Mvc.Angular.AttributeValuePair"/> class.
+            </summary>
+            <param name="name">The attribute name.</param>
+            <param name="value">The attribute value (optional).</param>
+            <exception cref="T:System.ArgumentNullException">name is null or empty.</exception>
+        </member>
+        <member name="P:SS.Mvc.Angular.AttributeValuePair.Name">
+            <summary>
+            Gets the name for the attribute.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.AttributeValuePair.Value">
+            <summary>
+            Gets or sets the value of the attribute.
+            </summary>
+        </member>
+        <member name="T:SS.Mvc.Angular.NgClassErrorBinding`1">
+            <summary>
+            Represents a binding used to show validation errors.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+        </member>
+        <member name="M:SS.Mvc.Angular.NgClassErrorBinding`1.And``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Retrieves the validation metadata for the specified expression and concatenates a validation statement to the current binding.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">An expression that identifies the object that contains the properties to render.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.NgClassErrorBinding`1.And(System.String)">
+            <summary>
+            Concatenates a validation statement to the current binding.
+            </summary>
+            <param name="condition">The condition.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:SS.Mvc.Angular.NgClassErrorBinding`1.ToHtmlString">
+            <summary>
+            Returns an HTML-encoded string with the validation bindings.
+            </summary>
+        </member>
+        <member name="T:SS.Mvc.Angular.NgRepeatContext`1">
+            <summary>
+            Represents an AngularJS repeat context.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+        </member>
+        <member name="M:SS.Mvc.Angular.NgRepeatContext`1.RenderDirective">
+            <summary>
+            Renders the ng-repeat directive.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.NgRepeatContext`1.RenderDirective(System.String)">
+            <summary>
+            Renders the ng-repeat directive
+            </summary>
+            <param name="filter">An optional filter to add to the binding.</param>
+        </member>
+        <member name="T:SS.Mvc.Angular.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.Properties.Resources.Argument_Cannot_Be_Null_Or_Empty">
+            <summary>
+              Looks up a localized string similar to Value cannot be null or an empty string..
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.Properties.Resources.Common_PropertyNotFound">
+            <summary>
+              Looks up a localized string similar to The property {0}.{1} could not be found..
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.Properties.Resources.Common_TypeMustDriveFromType">
+            <summary>
+              Looks up a localized string similar to The type {0} must derive from {1}.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.Properties.Resources.DataAnnotationsModelValidatorProvider_ConstructorRequirements">
+            <summary>
+              Looks up a localized string similar to The type {0} must have a public constructor which accepts three parameters of types {1}, {2}, and {3}.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.Properties.Resources.LocalizableString_LocalizationFailed">
+            <summary>
+              Looks up a localized string similar to Cannot retrieve property &apos;{0}&apos; because localization failed.  Type &apos;{1}&apos; is not public or does not contain a public static string property with the name &apos;{2}&apos;..
+            </summary>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.AngularAssociatedValidatorProvider">
+            <summary>
+            Provides an abstract class for classes that implement a validation provider.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.AngularAssociatedValidatorProvider.GetValidators(System.Web.Mvc.ModelMetadata,SS.Mvc.Angular.AngularBindingContext)">
+            <summary>
+            Gets a list of validators.
+            </summary>
+            <param name="metadata">The model metadata.</param>
+            <param name="context">The AngularJS binding context.</param>
+            <exception cref="T:System.ArgumentNullException">metadata</exception>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.AngularAssociatedValidatorProvider.GetTypeDescriptor(System.Type)">
+            <summary>
+            Gets a type descriptor for the specified type.
+            </summary>
+            <param name="type">The type of the validation provider.</param>
+            <returns>A type descriptor for the specified type.</returns>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.AngularAssociatedValidatorProvider.GetValidators(System.Web.Mvc.ModelMetadata,SS.Mvc.Angular.AngularBindingContext,System.Collections.Generic.IEnumerable{System.Attribute})">
+            <summary>
+            Gets the validators for the model using the metadata, the controller context, and a list of attributes.
+            </summary>
+            <param name="metadata">The model metadata.</param>
+            <param name="context">The AngularJS binding context.</param>
+            <param name="attributes">The list of attributes.</param>
+            <returns>The validators for the model.</returns>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidationFactory">
+            <summary>
+            Represents a factory for validators based on <see cref="T:System.ComponentModel.DataAnnotations.ValidationAttribute" />
+            </summary>
+            <param name="metadata">The model metadata.</param>
+            <param name="context">The AngularJS binding context.</param>
+            <param name="attribute">The attribute.</param>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidatorProvider">
+            <summary>
+            An implementation of <see cref="T:SS.Mvc.Angular.Validation.AngularModelValidatorProvider"/> which providers validators
+            for attributes which derive from <see cref="T:System.ComponentModel.DataAnnotations.ValidationAttribute"/>. To support
+            client side validation, you can register adapters through the static methods
+            on this class.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidatorProvider.AddImplicitRequiredAttributeForValueTypes">
+            <summary>
+            Gets or sets a value indicating whether non-nullable value types are required.
+            </summary>
+            <value>
+            <c>true</c> if non-nullable value types are required; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidatorProvider.RegisterAdapter(System.Type,System.Type)">
+            <summary>
+            Registers an adapter to provide client-side validation.
+            </summary>
+            <param name="attributeType">The type of the validation attribute.</param>
+            <param name="adapterType">The type of the adapter.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidatorProvider.RegisterAdapterFactory(System.Type,SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidationFactory)">
+            <summary>
+            Registers an adapter factory for the validation provider.
+            </summary>
+            <param name="attributeType">Type of the attribute.</param>
+            <param name="factory">The factory that will be used to create the <see cref="T:SS.Mvc.Angular.Validation.AngularModelValidator"/> object for the specified attribute.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidatorProvider.RegisterDefaultAdapter(System.Type)">
+            <summary>
+            Registers the default adapter.
+            </summary>
+            <param name="adapterType">Type of the adapter.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidatorProvider.RegisterDefaultAdapterFactory(SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidationFactory)">
+            <summary>
+            Registers the default adapter factory.
+            </summary>
+            <param name="factory">The factory that will be used to create the <see cref="T:SS.Mvc.Angular.Validation.AngularModelValidator"/> object for the specified attribute.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidatorProvider.GetValidators(System.Web.Mvc.ModelMetadata,SS.Mvc.Angular.AngularBindingContext,System.Collections.Generic.IEnumerable{System.Attribute})">
+            <summary>
+            Gets a list of validators.
+            </summary>
+            <param name="metadata">The model metadata.</param>
+            <param name="context">The AngularJS binding context.</param>
+            <param name="attributes">The list of validation attributes.</param>
+            <returns>A list of validators.</returns>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.AngularModelValidator">
+            <summary>
+            Provides a base class for implementing validation logic.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.AngularModelValidator.#ctor(System.Web.Mvc.ModelMetadata,SS.Mvc.Angular.AngularBindingContext)">
+            <summary>
+            Called from constructors in derived classes to initialize the <see cref="T:SS.Mvc.Angular.Validation.AngularModelValidator"/> class.
+            </summary>
+            <param name="metadata">The model metadata.</param>
+            <param name="context">The AngularJS binding context.</param>
+            <exception cref="T:System.ArgumentNullException">
+            metadata is <c>null</c>
+            or
+            context is <c>null</c>
+            </exception>
+        </member>
+        <member name="P:SS.Mvc.Angular.Validation.AngularModelValidator.IsRequired">
+            <summary>
+            Gets or sets a value that indicates whether a model property is required
+            </summary>
+            <value>
+            <c>true</c> if the model property is required; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:SS.Mvc.Angular.Validation.AngularModelValidator.Context">
+            <summary>
+            Gets the AngularJS binding context.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.Validation.AngularModelValidator.Metadata">
+            <summary>
+            Gets the metadata for the model validator.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.AngularModelValidator.GetClientValidationRules">
+            <summary>
+            When implemented in a derived class, returns metadata for client validation.
+            </summary>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.AngularModelValidatorProvider">
+            <summary>
+            Provides a list of validators for a model.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.AngularModelValidatorProvider.GetValidators(System.Web.Mvc.ModelMetadata,SS.Mvc.Angular.AngularBindingContext)">
+            <summary>
+            Gets a list of validators.
+            </summary>
+            <param name="metadata">The model metadata.</param>
+            <param name="context">The AngularJS binding context.</param>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.AngularModelValidatorProviderCollection">
+            <summary>
+            Provides a container for a list of validation providers.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.AngularModelValidatorProviderCollection.GetValidators(System.Web.Mvc.ModelMetadata,SS.Mvc.Angular.AngularBindingContext)">
+            <summary>
+            Returns the list of model validators.
+            </summary>
+            <param name="metadata">The model metadata.</param>
+            <param name="context">The AngularJS binding context.</param>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.AngularModelValidatorProviders">
+            <summary>
+            Provides a container for the current validation provider.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.Validation.AngularModelValidatorProviders.Providers">
+            <summary>
+            Gets the model validator provider collection.
+            </summary>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.EqualToValidationRule">
+            <summary>
+            Provides information to create an AngularJS equals validation and error message.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.EqualToValidationRule.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Mvc.Angular.Validation.EqualToValidationRule"/> class.
+            </summary>
+            <param name="errorMessage">The error message.</param>
+            <param name="other">The other property name.</param>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidator">
+            <summary>
+            Provides a model validator.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidator.#ctor(System.Web.Mvc.ModelMetadata,SS.Mvc.Angular.AngularBindingContext,System.ComponentModel.DataAnnotations.ValidationAttribute)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidator"/> class.
+            </summary>
+            <param name="metadata">The model metadata.</param>
+            <param name="context">The AngularJS binding context.</param>
+            <param name="attribute">The validation attribute for the model.</param>
+            <exception cref="T:System.ArgumentNullException">attribute is <code>null</code></exception>
+        </member>
+        <member name="P:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidator.Attribute">
+            <summary>
+            Gets the validation attribute for the model validator.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidator.ErrorMessage">
+            <summary>
+            Gets the error message for the validation failure
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidator.GetClientValidationRules">
+            <summary>
+            Retrieves a collection of client validation rules.
+            </summary>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidator`1">
+            <summary>
+            Provides a model validator for a specified validation type.
+            </summary>
+            <typeparam name="TAttribute">The type of the validation attribute.</typeparam>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidator`1.#ctor(System.Web.Mvc.ModelMetadata,SS.Mvc.Angular.AngularBindingContext,`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidator`1"/> class.
+            </summary>
+            <param name="metadata">The model metadata.</param>
+            <param name="context">The AngularJS binding context.</param>
+            <param name="attribute">The validation attribute for the model.</param>
+        </member>
+        <member name="P:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidator`1.IsRequired">
+            <summary>
+            Gets or sets a value that indicates whether a model property is required
+            </summary>
+            <value>
+            <c>true</c> if the model property is required; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:SS.Mvc.Angular.Validation.AngularDataAnnotationsModelValidator`1.Attribute">
+            <summary>
+            Gets the validation attribute for the model validator.
+            </summary>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.RangeAttributeAdapter">
+            <summary>
+            Provides an adapter for the <see cref="T:System.ComponentModel.DataAnnotations.RangeAttribute"/> attribute.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.RangeAttributeAdapter.#ctor(System.Web.Mvc.ModelMetadata,SS.Mvc.Angular.AngularBindingContext,System.ComponentModel.DataAnnotations.RangeAttribute)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Mvc.Angular.Validation.RangeAttributeAdapter"/> class.
+            </summary>
+            <param name="metadata">The model metadata.</param>
+            <param name="context">The AngularJS binding context.</param>
+            <param name="attribute">The range attribute.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.RangeAttributeAdapter.GetClientValidationRules">
+            <summary>
+            Gets a list of client validation rules for a range check.
+            </summary>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.RangeValidationRule">
+            <summary>
+            Provides information to create an AngularJS range validation and error message.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.RangeValidationRule.#ctor(System.String,System.Object,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Mvc.Angular.Validation.RangeValidationRule"/> class.
+            </summary>
+            <param name="errorMessage">The error message.</param>
+            <param name="minValue">The minimum value.</param>
+            <param name="maxValue">The maximum value.</param>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.RegularExpressionAttributeAdapter">
+            <summary>
+            Provides an adapter for the <see cref="T:System.ComponentModel.DataAnnotations.RegularExpressionAttribute"/> attribute.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.RegularExpressionAttributeAdapter.#ctor(System.Web.Mvc.ModelMetadata,SS.Mvc.Angular.AngularBindingContext,System.ComponentModel.DataAnnotations.RegularExpressionAttribute)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Mvc.Angular.Validation.RegularExpressionAttributeAdapter"/> class.
+            </summary>
+            <param name="metadata">The model metadata.</param>
+            <param name="context">The AngularJS binding context.</param>
+            <param name="attribute">The regular expression attribute.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.RegularExpressionAttributeAdapter.GetClientValidationRules">
+            <summary>
+            Gets a list of regular-expression client validation rules.
+            </summary>
+            <returns>A list of regular-expression client validation rules.</returns>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.RequiredAttributeAdapter">
+            <summary>
+            Provides an adapter for the <see cref="T:System.ComponentModel.DataAnnotations.RequiredAttribute" /> attribute.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.RequiredAttributeAdapter.#ctor(System.Web.Mvc.ModelMetadata,SS.Mvc.Angular.AngularBindingContext,System.ComponentModel.DataAnnotations.RequiredAttribute)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Mvc.Angular.Validation.RequiredAttributeAdapter"/> class.
+            </summary>
+            <param name="metadata">The model metadata.</param>
+            <param name="context">The AngularJS binding context.</param>
+            <param name="attribute">The required attribute.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.RequiredAttributeAdapter.GetClientValidationRules">
+            <summary>
+            Gets a list of required-value client validation rules.
+            </summary>
+            <returns>A list of required-value client validation rules.</returns>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.RequiredValidationRule">
+            <summary>
+            Provides information to create an AngularJS required validation and error message.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.RequiredValidationRule.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Mvc.Angular.Validation.RequiredValidationRule"/> class.
+            </summary>
+            <param name="errorMessage">The error message.</param>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.StringLengthAttributeAdapter">
+            <summary>
+            Provides an adapter for the <see cref="T:System.ComponentModel.DataAnnotations.StringLengthAttribute"/> attribute.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.StringLengthAttributeAdapter.#ctor(System.Web.Mvc.ModelMetadata,SS.Mvc.Angular.AngularBindingContext,System.ComponentModel.DataAnnotations.StringLengthAttribute)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Mvc.Angular.Validation.StringLengthAttributeAdapter"/> class.
+            </summary>
+            <param name="metadata">The model metadata.</param>
+            <param name="context">The AngularJS binding context.</param>
+            <param name="attribute">The string-length attribute.</param>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.StringLengthAttributeAdapter.GetClientValidationRules">
+            <summary>
+            Gets a list of string-length client validation rules.
+            </summary>
+            <returns>A list of string-length client validation rules.</returns>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.StringLengthValidationRule">
+            <summary>
+            Provides information to create an AngularJS string length validation and error message.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.StringLengthValidationRule.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Mvc.Angular.Validation.StringLengthValidationRule"/> class.
+            </summary>
+            <param name="errorMessage">The error message.</param>
+            <param name="minimumLength">The minimum length.</param>
+            <param name="maximumLength">The maximum length.</param>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.ValidationRegexRule">
+            <summary>
+            Provides information to create an AngularJS pattern validation and error message.
+            </summary>
+        </member>
+        <member name="M:SS.Mvc.Angular.Validation.ValidationRegexRule.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Mvc.Angular.Validation.ValidationRegexRule"/> class.
+            </summary>
+            <param name="errorMessage">The error message.</param>
+            <param name="pattern">The regex pattern.</param>
+        </member>
+        <member name="T:SS.Mvc.Angular.Validation.ValidationRule">
+            <summary>
+            Provides information to create an AngularJS validation and error message.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.Validation.ValidationRule.ErrorMessage">
+            <summary>
+            Gets or sets the error message to be displayed when the validation fails.
+            </summary>
+        </member>
+        <member name="P:SS.Mvc.Angular.Validation.ValidationRule.ValidationParameters">
+            <summary>
+            Gets a dictionary of validation parameters. The key corresponds to the normalized AngularJS directive name, 
+            and the value is the corresponding attribute with an optional value.
+            </summary>
+        </member>
+    </members>
+</doc>

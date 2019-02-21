@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SS.Data</name>
+    </assembly>
+    <members>
+        <member name="T:SS.Data.IRepository`2">
+            <summary>
+            Represents a generic repository for entities of type <see cref="!:TEntity"/>.
+            </summary>
+            <typeparam name="TEntity">The type of entity.</typeparam>
+            <typeparam name="TKey">The type of the entity's unique identifier.</typeparam>
+        </member>
+        <member name="M:SS.Data.IRepository`2.Add(`0)">
+            <summary>
+            Adds the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:SS.Data.IRepository`2.Delete(`0)">
+            <summary>
+            Deletes the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:SS.Data.IRepository`2.Delete(`1)">
+            <summary>
+            Deletes the entity with the specified unique identifier.
+            </summary>
+            <param name="id">The entity's unique identifier.</param>
+        </member>
+        <member name="M:SS.Data.IRepository`2.Get(`1)">
+            <summary>
+            Gets the entity by id.
+            </summary>
+            <param name="id">The entity id.</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:SS.Data.IRepository`2.GetAll">
+            <summary>
+            Gets all.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:SS.Data.IRepository`2.Update(`0)">
+            <summary>
+            Updates the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <remarks></remarks>
+        </member>
+        <member name="T:SS.Data.IRepository`1">
+            <summary>
+            Represents a generic repository for entities of type <see cref="!:TEntity"/>.
+            </summary>
+            <typeparam name="TEntity">The type of entity.</typeparam>
+        </member>
+        <member name="T:SS.Data.IUnitOfWork">
+            <summary>
+            Defines the basic interface to implement the Unit of Work patterns
+            </summary>
+        </member>
+        <member name="M:SS.Data.IUnitOfWork.Commit">
+            <summary>
+            Comitts the current transction
+            </summary>
+        </member>
+        <member name="M:SS.Data.IUnitOfWork.Rollback">
+            <summary>
+            Rollbacks the current transction
+            </summary>
+        </member>
+        <member name="T:SS.Data.TypeHelper">
+            <summary>
+            Extension methods for object data manipulation.
+            </summary>
+        </member>
+    </members>
+</doc>

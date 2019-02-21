@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SS.Logging</name>
+    </assembly>
+    <members>
+        <member name="T:SS.Logging.ILogFacade">
+            <summary>
+            Provides methods for logging events.
+            </summary>
+        </member>
+        <member name="M:SS.Logging.ILogFacade.Debug(System.String,System.Object[])">
+            <summary>
+            Logs a debug message.
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The args.</param>
+        </member>
+        <member name="M:SS.Logging.ILogFacade.Error(System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs an error message.
+            </summary>
+            <param name="exception">The exception.</param>
+            <param name="format">The format.</param>
+            <param name="args">The args.</param>
+        </member>
+        <member name="M:SS.Logging.ILogFacade.Info(System.String,System.Object[])">
+            <summary>
+            Logs an info message.
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The args.</param>
+        </member>
+        <member name="M:SS.Logging.ILogFacade.Warn(System.String,System.Object[])">
+            <summary>
+            Logs a warning message.
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The args.</param>
+        </member>
+        <member name="M:SS.Logging.ILogFacade.Fatal(System.String,System.Object[])">
+            <summary>
+            Logs a fatal message.
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The args.</param>
+        </member>
+    </members>
+</doc>

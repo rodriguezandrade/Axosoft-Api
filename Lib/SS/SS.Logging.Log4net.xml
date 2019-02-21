@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SS.Logging.Log4net</name>
+    </assembly>
+    <members>
+        <member name="M:SS.Logging.Log4net.ExceptionLayoutExtended.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+            <remarks>
+            <para>
+            Constructs a ExceptionLayout
+            </para>
+            </remarks>
+        </member>
+        <member name="M:SS.Logging.Log4net.ExceptionLayoutExtended.ActivateOptions">
+            <summary>
+            Activate component options
+            </summary>
+            <remarks>
+            <para>
+            Part of the <see cref="T:log4net.Core.IOptionHandler"/> component activation framework.
+            </para>
+            <para>
+            This method does nothing as options become effective immediately.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:SS.Logging.Log4net.ExceptionLayoutExtended.Format(System.IO.TextWriter,log4net.Core.LoggingEvent)">
+            <summary>
+            Gets the exception text from the logging event
+            </summary>
+            <param name="writer">The TextWriter to write the formatted event to</param>
+            <param name="loggingEvent">the event being logged</param>
+            <remarks>
+            <para>
+            Write the exception string to the <see cref="T:System.IO.TextWriter"/>.
+            The exception string is retrieved from <see cref="M:log4net.Core.LoggingEvent.GetExceptionString"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="T:SS.Logging.Log4net.Log4NetLogFacade">
+            <summary>
+            Provides methods for logging events using the log4net framework.
+            </summary>
+        </member>
+        <member name="M:SS.Logging.Log4net.Log4NetLogFacade.Debug(System.String,System.Object[])">
+            <summary>
+            Logs a debug message
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The args.</param>
+        </member>
+        <member name="M:SS.Logging.Log4net.Log4NetLogFacade.Info(System.String,System.Object[])">
+            <summary>
+            Logs an information message
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The args.</param>
+        </member>
+        <member name="M:SS.Logging.Log4net.Log4NetLogFacade.Notice(System.String,System.Object[])">
+            <summary>
+            Logs a notice message
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The args.</param>
+        </member>
+        <member name="M:SS.Logging.Log4net.Log4NetLogFacade.Warn(System.String,System.Object[])">
+            <summary>
+            Logs a warn message
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The args.</param>
+        </member>
+        <member name="M:SS.Logging.Log4net.Log4NetLogFacade.Fatal(System.String,System.Object[])">
+            <summary>
+            Logs a fatal message.
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The args.</param>
+        </member>
+    </members>
+</doc>

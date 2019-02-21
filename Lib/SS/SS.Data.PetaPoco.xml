@@ -1,0 +1,2146 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SS.Data.PetaPoco</name>
+    </assembly>
+    <members>
+        <member name="T:SS.Data.PetaPoco.AnsiString">
+            <summary>
+            Wrap strings in an instance of this class to force use of DBType.AnsiString
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.AnsiString.#ctor(System.String)">
+            <summary>
+            Constructs an AnsiString
+            </summary>
+            <param name="str">The C# string to be converted to ANSI before being passed to the DB</param>
+        </member>
+        <member name="P:SS.Data.PetaPoco.AnsiString.Value">
+            <summary>
+            The string value
+            </summary>
+        </member>
+        <member name="T:SS.Data.PetaPoco.ColumnAttribute">
+            <summary>
+            For explicit poco properties, marks the property as a column and optionally
+            supplies the DB column name.
+            </summary>
+        </member>
+        <member name="T:SS.Data.PetaPoco.ColumnInfo">
+            <summary>
+            Hold information about a column in the database.
+            </summary>
+            <remarks>
+            Typically ColumnInfo is automatically populated from the attributes on a POCO object and it's properties. It can
+            however also be returned from the IMapper interface to provide your owning bindings between the DB and your POCOs.
+            </remarks>
+        </member>
+        <member name="P:SS.Data.PetaPoco.ColumnInfo.ColumnName">
+            <summary>
+            The SQL name of the column
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.ColumnInfo.ForceToUtc">
+            <summary>
+            True if time and date values returned through this column should be forced to UTC DateTimeKind. (no conversion is applied - the Kind of the DateTime property
+            is simply set to DateTimeKind.Utc instead of DateTimeKind.Unknown.
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.ColumnInfo.ResultColumn">
+            <summary>
+            True if this column returns a calculated value from the database and shouldn't be used in Insert and Update operations.
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.ColumnInfo.FromProperty(System.Reflection.PropertyInfo)">
+            <summary>
+            Creates and populates a ColumnInfo from the attributes of a POCO property.
+            </summary>
+            <param name="pi">The property whose column info is required</param>
+            <returns>A ColumnInfo instance</returns>
+        </member>
+        <member name="T:SS.Data.PetaPoco.DatabaseExtensions">
+            <summary>
+            Description of DatabaseExtensions.
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Execute(SS.Data.PetaPoco.IDatabase,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Executes a non-query command
+            </summary>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>The number of rows affected</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.ExecuteScalar``1(SS.Data.PetaPoco.IDatabase,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Executes a query and return the first column of the first row in the result set.
+            </summary>
+            <typeparam name="T">The type that the result value should be cast to</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>The scalar value cast to T</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Fetch``1(SS.Data.PetaPoco.IDatabase,System.String,System.Object[])">
+            <summary>
+            Runs a query and returns the result set as a typed list
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">The SQL query to execute</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>A List holding the results of the query</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Fetch``1(SS.Data.PetaPoco.IDatabase,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Runs a query and returns the result set as a typed list
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>A List holding the results of the query</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Fetch``3(SS.Data.PetaPoco.IDatabase,System.Func{``0,``1,``2},System.String,System.Object[])">
+            <summary>
+            Perform a multi-poco fetch
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="TRet">The returned list POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="cb">A callback function to connect the POCO instances, or <c>null</c> to automatically guess the relationships</param>
+            <param name="sql">The SQL query to be executed</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>A collection of POCO's as a List</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Fetch``4(SS.Data.PetaPoco.IDatabase,System.Func{``0,``1,``2,``3},System.String,System.Object[])">
+            <summary>
+            Perform a multi-poco fetch
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <typeparam name="TRet">The returned list POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="cb">A callback function to connect the POCO instances, or <c>null</c> to automatically guess the relationships</param>
+            <param name="sql">The SQL query to be executed</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>A collection of POCO's as a List</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Fetch``5(SS.Data.PetaPoco.IDatabase,System.Func{``0,``1,``2,``3,``4},System.String,System.Object[])">
+            <summary>
+            Perform a multi-poco fetch
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <typeparam name="T4">The fourth POCO type</typeparam>
+            <typeparam name="TRet">The returned list POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="cb">A callback function to connect the POCO instances, or <c>null</c> to automatically guess the relationships</param>
+            <param name="sql">The SQL query to be executed</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>A collection of POCO's as a List</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Fetch``6(SS.Data.PetaPoco.IDatabase,System.Func{``0,``1,``2,``3,``4,``5},System.String,System.Object[])">
+            <summary>
+            Perform a multi-poco fetch
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <typeparam name="T4">The fourth POCO type</typeparam>
+            <typeparam name="T5">The fifth POCO type</typeparam>
+            <typeparam name="TRet">The returned list POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="cb">A callback function to connect the POCO instances, or <c>null</c> to automatically guess the relationships</param>
+            <param name="sql">The SQL query to be executed</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>A collection of POCO's as a List</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Fetch``3(SS.Data.PetaPoco.IDatabase,System.Func{``0,``1,``2},SS.Data.PetaPoco.Sql)">
+            <summary>
+            Perform a multi-poco fetch
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="TRet">The returned list POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="cb">A callback function to connect the POCO instances, or <c>null</c> to automatically guess the relationships</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>A collection of POCO's as a List</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Fetch``4(SS.Data.PetaPoco.IDatabase,System.Func{``0,``1,``2,``3},SS.Data.PetaPoco.Sql)">
+            <summary>
+            Perform a multi-poco fetch
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <typeparam name="TRet">The returned list POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="cb">A callback function to connect the POCO instances, or <c>null</c> to automatically guess the relationships</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>A collection of POCO's as a List</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Fetch``5(SS.Data.PetaPoco.IDatabase,System.Func{``0,``1,``2,``3,``4},SS.Data.PetaPoco.Sql)">
+            <summary>
+            Perform a multi-poco fetch
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <typeparam name="T4">The fourth POCO type</typeparam>
+            <typeparam name="TRet">The returned list POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="cb">A callback function to connect the POCO instances, or <c>null</c> to automatically guess the relationships</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>A collection of POCO's as a List</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Fetch``2(SS.Data.PetaPoco.IDatabase,System.String,System.Object[])">
+            <summary>
+            Perform a multi-poco fetch
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">The SQL query to be executed</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>A collection of POCO's as a List</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Fetch``3(SS.Data.PetaPoco.IDatabase,System.String,System.Object[])">
+            <summary>
+            Perform a multi-poco fetch
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">The SQL query to be executed</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>A collection of POCO's as a List</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Fetch``4(SS.Data.PetaPoco.IDatabase,System.String,System.Object[])">
+            <summary>
+            Perform a multi-poco fetch
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <typeparam name="T4">The fourth POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">The SQL query to be executed</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>A collection of POCO's as a List</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Fetch``2(SS.Data.PetaPoco.IDatabase,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Perform a multi-poco fetch
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>A collection of POCO's as a List</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Fetch``3(SS.Data.PetaPoco.IDatabase,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Perform a multi-poco fetch
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>A collection of POCO's as a List</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Fetch``4(SS.Data.PetaPoco.IDatabase,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Perform a multi-poco fetch
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <typeparam name="T4">The fourth POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>A collection of POCO's as a List</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Fetch``1(SS.Data.PetaPoco.IDatabase,System.Int64,System.Int64,System.String,System.Object[])">
+            <summary>
+            Retrieves a page of records (without the total count)
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="page">The 1 based page number to retrieve</param>
+            <param name="itemsPerPage">The number of records per page</param>
+            <param name="sql">The base SQL query</param>
+            <param name="args">Arguments to any embedded parameters in the SQL statement</param>
+            <returns>A List of results</returns>
+            <remarks>
+            PetaPoco will automatically modify the supplied SELECT statement to only retrieve the
+            records for the specified page.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Fetch``1(SS.Data.PetaPoco.IDatabase,System.Int64,System.Int64,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Retrieves a page of records (without the total count)
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="page">The 1 based page number to retrieve</param>
+            <param name="itemsPerPage">The number of records per page</param>
+            <param name="sql">An SQL builder object representing the base SQL query and its arguments</param>
+            <returns>A List of results</returns>
+            <remarks>
+            PetaPoco will automatically modify the supplied SELECT statement to only retrieve the
+            records for the specified page.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.FetchAll``1(SS.Data.PetaPoco.IDatabase)">
+            <summary>
+            Retrieves a page of records (without the total count)
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <returns>A List of results</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.First``1(SS.Data.PetaPoco.IDatabase,System.String,System.Object[])">
+            <summary>
+            Runs a query that should always return at least one return
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">The SQL query</param>
+            <param name="args">Arguments to any embedded parameters in the SQL statement</param>
+            <returns>The first record in the result set</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.First``1(SS.Data.PetaPoco.IDatabase,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Runs a query that should always return at least one return
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>The first record in the result set</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.First``1(SS.Data.PetaPoco.IDatabase)">
+            <summary>
+            Runs a query that should always return at least one return
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <returns>The first record in the result set</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.FirstOrDefault``1(SS.Data.PetaPoco.IDatabase,System.String,System.Object[])">
+            <summary>
+            Runs a query and returns the first record, or the default value if no matching records
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">The SQL query</param>
+            <param name="args">Arguments to any embedded parameters in the SQL statement</param>
+            <returns>The first record in the result set, or default(T) if no matching rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.FirstOrDefault``1(SS.Data.PetaPoco.IDatabase,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Runs a query and returns the first record, or the default value if no matching records
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>The first record in the result set, or default(T) if no matching rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.FirstOrDefault``1(SS.Data.PetaPoco.IDatabase)">
+            <summary>
+            Runs a query and returns the first record, or the default value if no matching records
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <returns>The first record in the result set, or default(T) if no matching rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Page``1(SS.Data.PetaPoco.IDatabase,System.Int64,System.Int64,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Retrieves a page of records	and the total number of available records
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="page">The 1 based page number to retrieve</param>
+            <param name="itemsPerPage">The number of records per page</param>
+            <param name="sql">An SQL builder object representing the base SQL query and its arguments</param>
+            <returns>A Page of results</returns>
+            <remarks>
+            PetaPoco will automatically modify the supplied SELECT statement to only retrieve the
+            records for the specified page.  It will also execute a second query to retrieve the
+            total number of records in the result set.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Page``1(SS.Data.PetaPoco.IDatabase,System.Int64,System.Int64,SS.Data.PetaPoco.Sql,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Retrieves a page of records	and the total number of available records
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="page">The 1 based page number to retrieve</param>
+            <param name="itemsPerPage">The number of records per page</param>
+            <param name="sqlCount">An SQL builder object representing the SQL to retrieve the total number of records</param>
+            <param name="sqlPage">An SQL builder object representing the SQL to retrieve a single page of results</param>
+            <returns>A Page of results</returns>
+            <remarks>
+            This method allows separate SQL statements to be explicitly provided for the two parts of the page query.
+            The page and itemsPerPage parameters are not used directly and are used simply to populate the returned Page object.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Query``1(SS.Data.PetaPoco.IDatabase,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Runs an SQL query, returning the results as an IEnumerable collection
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">An SQL builder object representing the base SQL query and its arguments</param>
+            <returns>An enumerable collection of result records</returns>
+            <remarks>
+            For some DB providers, care should be taken to not start a new Query before finishing with
+            and disposing the previous one. In cases where this is an issue, consider using Fetch which
+            returns the results as a List rather than an IEnumerable.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Query``3(SS.Data.PetaPoco.IDatabase,System.Func{``0,``1,``2},System.String,System.Object[])">
+            <summary>
+            Perform a multi-poco query
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="TRet">The type of objects in the returned IEnumerable</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="cb">A callback function to connect the POCO instances, or <c>null</c> to automatically guess the relationships</param>
+            <param name="sql">The SQL query to be executed</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>A collection of POCO's as an IEnumerable</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Query``4(SS.Data.PetaPoco.IDatabase,System.Func{``0,``1,``2,``3},System.String,System.Object[])">
+            <summary>
+            Perform a multi-poco query
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <typeparam name="TRet">The type of objects in the returned IEnumerable</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="cb">A callback function to connect the POCO instances, or <c>null</c> to automatically guess the relationships</param>
+            <param name="sql">The SQL query to be executed</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>A collection of POCO's as an IEnumerable</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Query``5(SS.Data.PetaPoco.IDatabase,System.Func{``0,``1,``2,``3,``4},System.String,System.Object[])">
+            <summary>
+            Perform a multi-poco query
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <typeparam name="T4">The fourth POCO type</typeparam>
+            <typeparam name="TRet">The type of objects in the returned IEnumerable</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="cb">A callback function to connect the POCO instances, or <c>null</c> to automatically guess the relationships</param>
+            <param name="sql">The SQL query to be executed</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>A collection of POCO's as an IEnumerable</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Query``6(SS.Data.PetaPoco.IDatabase,System.Func{``0,``1,``2,``3,``4,``5},System.String,System.Object[])">
+            <summary>
+            Perform a multi-poco query
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <typeparam name="T4">The fourth POCO type</typeparam>
+            <typeparam name="T5">The fifth POCO type</typeparam>
+            <typeparam name="TRet">The type of objects in the returned IEnumerable</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="cb">A callback function to connect the POCO instances, or <c>null</c> to automatically guess the relationships</param>
+            <param name="sql">The SQL query to be executed</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>A collection of POCO's as an IEnumerable</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Query``3(SS.Data.PetaPoco.IDatabase,System.Func{``0,``1,``2},SS.Data.PetaPoco.Sql)">
+            <summary>
+            Perform a multi-poco query
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="TRet">The type of objects in the returned IEnumerable</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="cb">A callback function to connect the POCO instances, or <c>null</c> to automatically guess the relationships</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>A collection of POCO's as an IEnumerable</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Query``4(SS.Data.PetaPoco.IDatabase,System.Func{``0,``1,``2,``3},SS.Data.PetaPoco.Sql)">
+            <summary>
+            Perform a multi-poco query
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <typeparam name="TRet">The type of objects in the returned IEnumerable</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="cb">A callback function to connect the POCO instances, or <c>null</c> to automatically guess the relationships</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>A collection of POCO's as an IEnumerable</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Query``5(SS.Data.PetaPoco.IDatabase,System.Func{``0,``1,``2,``3,``4},SS.Data.PetaPoco.Sql)">
+            <summary>
+            Perform a multi-poco query
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <typeparam name="T4">The fourth POCO type</typeparam>
+            <typeparam name="TRet">The type of objects in the returned IEnumerable</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="cb">A callback function to connect the POCO instances, or <c>null</c> to automatically guess the relationships</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>A collection of POCO's as an IEnumerable</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Query``2(SS.Data.PetaPoco.IDatabase,System.String,System.Object[])">
+            <summary>
+            Perform a multi-poco query
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">The SQL query to be executed</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>A collection of POCO's as an IEnumerable</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Query``3(SS.Data.PetaPoco.IDatabase,System.String,System.Object[])">
+            <summary>
+            Perform a multi-poco query
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">The SQL query to be executed</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>A collection of POCO's as an IEnumerable</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Query``4(SS.Data.PetaPoco.IDatabase,System.String,System.Object[])">
+            <summary>
+            Perform a multi-poco query
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <typeparam name="T4">The fourth POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">The SQL query to be executed</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>A collection of POCO's as an IEnumerable</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Query``2(SS.Data.PetaPoco.IDatabase,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Perform a multi-poco query
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>A collection of POCO's as an IEnumerable</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Query``3(SS.Data.PetaPoco.IDatabase,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Perform a multi-poco query
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>A collection of POCO's as an IEnumerable</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Query``4(SS.Data.PetaPoco.IDatabase,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Perform a multi-poco query
+            </summary>
+            <typeparam name="T1">The first POCO type</typeparam>
+            <typeparam name="T2">The second POCO type</typeparam>
+            <typeparam name="T3">The third POCO type</typeparam>
+            <typeparam name="T4">The fourth POCO type</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>A collection of POCO's as an IEnumerable</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.QueryAll``1(SS.Data.PetaPoco.IDatabase)">
+            <summary>
+            Returns all the elements the results as an IEnumerable collection
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <returns>An enumerable collection of result records</returns>
+            <remarks>
+            For some DB providers, care should be taken to not start a new Query before finishing with
+            and disposing the previous one. In cases where this is an issue, consider using Fetch which
+            returns the results as a List rather than an IEnumerable.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Single``1(SS.Data.PetaPoco.IDatabase,System.String,System.Object[])">
+            <summary>
+            Runs a query that should always return a single row.
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">The SQL query</param>
+            <param name="args">Arguments to any embedded parameters in the SQL statement</param>
+            <returns>The single record matching the specified primary key value</returns>
+            <remarks>
+            Throws an exception if there are zero or more than one matching record
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.Single``1(SS.Data.PetaPoco.IDatabase,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Runs a query that should always return a single row.
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>The single record matching the specified primary key value</returns>
+            <remarks>
+            Throws an exception if there are zero or more than one matching record
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.SingleOrDefault``1(SS.Data.PetaPoco.IDatabase,System.String,System.Object[])">
+            <summary>
+            Runs a query that should always return either a single row, or no rows
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">The SQL query</param>
+            <param name="args">Arguments to any embedded parameters in the SQL statement</param>
+            <returns>The single record matching the specified primary key value, or default(T) if no matching rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.SingleOrDefault``1(SS.Data.PetaPoco.IDatabase,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Runs a query that should always return either a single row, or no rows
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="sql">An SQL builder object representing the query and its arguments</param>
+            <returns>The single record matching the specified primary key value, or default(T) if no matching rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.SkipTake``1(SS.Data.PetaPoco.IDatabase,System.Int64,System.Int64,SS.Data.PetaPoco.Sql)">
+            <summary>
+            Retrieves a range of records from result set
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="database">The <see cref="T:SS.Data.PetaPoco.IDatabase" /> instance.</param>
+            <param name="skip">The number of rows at the start of the result set to skip over</param>
+            <param name="take">The number of rows to retrieve</param>
+            <param name="sql">An SQL builder object representing the base SQL query and its arguments</param>
+            <returns>A List of results</returns>
+            <remarks>
+            PetaPoco will automatically modify the supplied SELECT statement to only retrieve the
+            records for the specified range.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.ExecuteToDictionary(SS.Data.PetaPoco.IDatabase,System.Collections.Generic.ICollection{System.String},System.String,System.Object[])">
+            <summary>
+            Executes to the specified statement and creates a collection of <see cref="T:System.Collections.Generic.IDictionary`2" /> objects from the result.
+            </summary>
+            <param name="database">The database.</param>
+            <param name="outputColumns">A collection where the resulting output columns should be added, or <c>null</c>.</param>
+            <param name="sql">The SQL statement to execute</param>
+            <param name="args">The arguments.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="database" /> is <c>null</c> or <paramref name="sql" /> is <c>null</c> is <c>null</c></exception>
+            <exception cref="T:System.InvalidOperationException">Output column collection must not be read-only.</exception>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseExtensions.ExecuteToDictionary(SS.Data.PetaPoco.IDatabase,System.String,System.Object[])">
+            <summary>
+            Executes to the specified statement and creates a collection of <see cref="T:System.Collections.Generic.IDictionary`2"/> objects from the result.
+            </summary>
+            <param name="database">The database.</param>
+            <param name="sql">The SQL statement to execute</param>
+            <param name="args">The arguments.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="database" /> is <c>null</c> or <paramref name="sql" /> is <c>null</c> is <c>null</c>
+            </exception>
+        </member>
+        <member name="T:SS.Data.PetaPoco.DatabaseTypes.DatabaseType">
+            <summary>
+            Base class for DatabaseType handlers - provides default/common handling for different database engines
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseTypes.DatabaseType.Resolve(System.String,System.String)">
+            <summary>
+            Look at the type and provider name being used and instantiate a suitable DatabaseType instance.
+            </summary>
+            <param name="typeName"></param>
+            <param name="providerName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseTypes.DatabaseType.BuildPageQuery(System.Int64,System.Int64,SS.Data.PetaPoco.Internal.PagingHelper.SQLParts,System.Object[]@)">
+            <summary>
+            Builds an SQL query suitable for performing page based queries to the database
+            </summary>
+            <param name="skip">The number of rows that should be skipped by the query</param>
+            <param name="take">The number of rows that should be retruend by the query</param>
+            <param name="parts">The original SQL query after being parsed into it's component parts</param>
+            <param name="args">Arguments to any embedded parameters in the SQL query</param>
+            <returns>The final SQL query that should be executed.</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseTypes.DatabaseType.EscapeSqlIdentifier(System.String)">
+            <summary>
+            Escape and arbitary SQL identifier into a format suitable for the associated database provider
+            </summary>
+            <param name="str">The SQL identifier to be escaped</param>
+            <returns>The escaped identifier</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseTypes.DatabaseType.EscapeTableName(System.String)">
+            <summary>
+            Escape a tablename into a suitable format for the associated database provider.
+            </summary>
+            <param name="tableName">The name of the table (as specified by the client program, or as attributes on the associated POCO class.</param>
+            <returns>The escaped table name</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseTypes.DatabaseType.ExecuteInsert(SS.Data.PetaPoco.Database,System.Data.IDbCommand,System.String)">
+            <summary>
+            Performs an Insert operation
+            </summary>
+            <param name="db">The calling Database object</param>
+            <param name="cmd">The insert command to be executed</param>
+            <param name="primaryKeyName">The primary key of the table being inserted into</param>
+            <returns>The ID of the newly inserted record</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseTypes.DatabaseType.GetAutoIncrementExpression(SS.Data.PetaPoco.TableInfo)">
+            <summary>
+            Return an SQL expression that can be used to populate the primary key column of an auto-increment column.
+            </summary>
+            <param name="ti">Table info describing the table</param>
+            <returns>An SQL expressions</returns>
+            <remarks>See the Oracle database type for an example of how this method is used.</remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseTypes.DatabaseType.GetExistsSql">
+            <summary>
+            Returns an SQL Statement that can check for the existance of a row in the database.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseTypes.DatabaseType.GetInsertOutputClause(System.String)">
+            <summary>
+            Returns an SQL expression that can be used to specify the return value of auto incremented columns.
+            </summary>
+            <param name="primaryKeyName">The primary key of the row being inserted.</param>
+            <returns>An expression describing how to return the new primary key value</returns>
+            <remarks>See the SQLServer database provider for an example of how this method is used.</remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseTypes.DatabaseType.GetParameterPrefix(System.String)">
+            <summary>
+            Returns the prefix used to delimit parameters in SQL query strings.
+            </summary>
+            <param name="connectionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseTypes.DatabaseType.MapParameterValue(System.Object)">
+            <summary>
+            Converts a supplied C# object value into a value suitable for passing to the database
+            </summary>
+            <param name="value">The value to convert</param>
+            <returns>The converted value</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.DatabaseTypes.DatabaseType.PreExecute(System.Data.IDbCommand)">
+            <summary>
+            Called immediately before a command is executed, allowing for modification of the IDbCommand before it's passed to the database provider
+            </summary>
+            <param name="cmd"></param>
+        </member>
+        <member name="T:SS.Data.PetaPoco.ExplicitColumnsAttribute">
+            <summary>
+            Poco classes marked with the Explicit attribute require all column properties to
+            be marked with the Column attribute
+            </summary>
+        </member>
+        <member name="T:SS.Data.PetaPoco.IDatabase">
+            <summary>
+            The main PetaPoco Database class.  You can either use this class directly, or derive from it.
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.IDatabase.CommandTimeout">
+            <summary>
+            Sets the timeout value for all SQL statements.
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.IDatabase.Connection">
+            <summary>
+            Provides access to the currently open shared connection (or null if none)
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.IDatabase.EnableAutoSelect">
+            <summary>
+            When set to true, PetaPoco will automatically create the "SELECT columns" part of any query that looks like it needs it
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.IDatabase.EnableNamedParams">
+            <summary>
+            When set to true, parameters can be named ?myparam and populated from properties of the passed in argument values.
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.IDatabase.KeepConnectionAlive">
+            <summary>
+            When set to true the first opened connection is kept alive until this object is disposed
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.IDatabase.LastArgs">
+            <summary>
+            Retrieves the arguments to the last execute statement
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.IDatabase.LastCommand">
+            <summary>
+            Returns a formatted string describing the last executed SQL statement and its argument values
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.IDatabase.LastSql">
+            <summary>
+            Retrieves the SQL of the last executed statement
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.IDatabase.OneTimeCommandTimeout">
+            <summary>
+            Sets the timeout value for the next (and only next) SQL statement
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.AbortTransaction">
+            <summary>
+            Aborts the entire outer most transaction scope
+            </summary>
+            <remarks>
+            Called automatically by Transaction.Dispose()
+            if the transaction wasn't completed.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.BeginTransaction">
+            <summary>
+            Starts a transaction scope, see GetTransaction() for recommended usage
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.CloseSharedConnection">
+            <summary>
+            Releases the shared connection
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.CompleteTransaction">
+            <summary>
+            Marks the current transaction scope as complete.
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.EscapeSqlIdentifier(System.String)">
+            <summary>
+            Escapes an arbitary SQL identifier into a format suitable for the associated database provider.
+            </summary>
+            <param name="str">The SQL identifier to be escaped</param>
+            <returns>The escaped identifier</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Delete(System.String,System.String,System.Object)">
+            <summary>
+            Performs and SQL Delete
+            </summary>
+            <param name="tableName">The name of the table to delete from</param>
+            <param name="primaryKeyName">The name of the primary key column</param>
+            <param name="poco">The POCO object whose primary key value will be used to delete the row</param>
+            <returns>The number of rows affected</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Delete(System.String,System.String,System.Object,System.Object)">
+            <summary>
+            Performs and SQL Delete
+            </summary>
+            <param name="tableName">The name of the table to delete from</param>
+            <param name="primaryKeyName">The name of the primary key column</param>
+            <param name="poco">The POCO object whose primary key value will be used to delete the row (or null to use the supplied primary key value)</param>
+            <param name="primaryKeyValue">The value of the primary key identifing the record to be deleted (or null, or get this value from the POCO instance)</param>
+            <returns>The number of rows affected</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Delete(System.Object)">
+            <summary>
+            Performs an SQL Delete
+            </summary>
+            <param name="poco">The POCO object specifying the table name and primary key value of the row to be deleted</param>
+            <returns>The number of rows affected</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Delete``1(System.Object)">
+            <summary>
+            Performs an SQL Delete
+            </summary>
+            <typeparam name="T">The POCO class whose attributes identify the table and primary key to be used in the delete</typeparam>
+            <param name="pocoOrPrimaryKey">The value of the primary key of the row to delete</param>
+            <returns></returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Delete``1(System.String,System.Object[])">
+            <summary>
+            Performs an SQL Delete
+            </summary>
+            <typeparam name="T">The POCO class whose attributes specify the name of the table to delete from</typeparam>
+            <param name="sql">The SQL condition clause identifying the row to delete (ie: everything after "DELETE FROM tablename"</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Delete``1(SS.Data.PetaPoco.Sql)">
+            <summary>
+            Performs an SQL Delete
+            </summary>
+            <typeparam name="T">The POCO class whose attributes specify the name of the table to delete from</typeparam>
+            <param name="sql">An SQL builder object representing the SQL condition clause identifying the row to delete (ie: everything after "DELETE FROM tablename"</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Execute(System.String,System.Object[])">
+            <summary>
+            Executes a non-query command
+            </summary>
+            <param name="sql">The SQL statement to execute</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>The number of rows affected</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.ExecuteScalar``1(System.String,System.Object[])">
+            <summary>
+            Executes a query and return the first column of the first row in the result set.
+            </summary>
+            <typeparam name="T">The type that the result value should be cast to</typeparam>
+            <param name="sql">The SQL query to execute</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>The scalar value cast to T</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Exists``1(System.String,System.Object[])">
+            <summary>
+            Checks for the existance of a row matching the specified condition
+            </summary>
+            <typeparam name="T">The Type representing the table being queried</typeparam>
+            <param name="sqlCondition">The SQL expression to be tested for (ie: the WHERE expression)</param>
+            <param name="args">Arguments to any embedded parameters in the SQL statement</param>
+            <returns>True if a record matching the condition is found.</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Exists``1(System.Object)">
+            <summary>
+            Checks for the existance of a row with the specified primary key value.
+            </summary>
+            <typeparam name="T">The Type representing the table being queried</typeparam>
+            <param name="primaryKey">The primary key value to look for</param>
+            <returns>True if a record with the specified primary key value exists.</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.FormatCommand(System.Data.IDbCommand)">
+            <summary>
+            Formats the contents of a DB command for display
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.FormatCommand(System.String,System.Object[])">
+            <summary>
+            Formats an SQL query and its arguments for display
+            </summary>
+            <param name="sql"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.GetTransaction">
+             <summary>
+             Starts or continues a transaction.
+             </summary>
+             <returns>An ITransaction reference that must be Completed or disposed</returns>
+             <remarks>
+             This method makes management of calls to Begin/End/CompleteTransaction easier.
+            
+             The usage pattern for this should be:
+            
+             using (var tx = db.GetTransaction())
+             {
+            		// Do stuff
+            		db.Update(...);
+            
+                 // Mark the transaction as complete
+                 tx.Complete();
+             }
+            
+             Transactions can be nested but they must all be completed otherwise the entire
+             transaction is aborted.
+             </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Insert(System.String,System.String,System.Object)">
+            <summary>
+            Performs an SQL Insert
+            </summary>
+            <param name="tableName">The name of the table to insert into</param>
+            <param name="primaryKeyName">The name of the primary key column of the table</param>
+            <param name="poco">The POCO object that specifies the column values to be inserted</param>
+            <returns>The auto allocated primary key of the new record</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Insert(System.String,System.String,System.Boolean,System.Object)">
+            <summary>
+            Performs an SQL Insert
+            </summary>
+            <param name="tableName">The name of the table to insert into</param>
+            <param name="primaryKeyName">The name of the primary key column of the table</param>
+            <param name="autoIncrement">True if the primary key is automatically allocated by the DB</param>
+            <param name="poco">The POCO object that specifies the column values to be inserted</param>
+            <returns>The auto allocated primary key of the new record, or null for non-auto-increment tables</returns>
+            <remarks>Inserts a poco into a table.  If the poco has a property with the same name
+            as the primary key the id of the new record is assigned to it.  Either way,
+            the new id is returned.</remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Insert(System.Object)">
+            <summary>
+            Performs an SQL Insert
+            </summary>
+            <param name="poco">The POCO object that specifies the column values to be inserted</param>
+            <returns>The auto allocated primary key of the new record, or null for non-auto-increment tables</returns>
+            <remarks>The name of the table, its primary key and whether it is an auto-allocated primary key are retrieved
+            from the POCO's attributes</remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.IsNew(System.String,System.Object)">
+            <summary>
+            Check if a poco represents a new row
+            </summary>
+            <param name="primaryKeyName">The name of the primary key column</param>
+            <param name="poco">The object instance whose "newness" is to be tested</param>
+            <returns>True if the POCO represents a record already in the database</returns>
+            <remarks>This method simply tests if the POCO's primary key column property has been set to something non-zero.</remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.IsNew(System.Object)">
+            <summary>
+            Check if a poco represents a new row
+            </summary>
+            <param name="poco">The object instance whose "newness" is to be tested</param>
+            <returns>True if the POCO represents a record already in the database</returns>
+            <remarks>This method simply tests if the POCO's primary key column property has been set to something non-zero.</remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.OnBeginTransaction">
+            <summary>
+            Called when a transaction starts.  Overridden by the T4 template generated database
+            classes to ensure the same DB instance is used throughout the transaction.
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.OnConnectionClosing(System.Data.IDbConnection)">
+            <summary>
+            Called when DB connection closed
+            </summary>
+            <param name="conn">The soon to be closed IDBConnection</param>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.OnConnectionOpened(System.Data.IDbConnection)">
+            <summary>
+            Called when DB connection opened
+            </summary>
+            <param name="conn">The newly opened IDbConnection</param>
+            <returns>The same or a replacement IDbConnection</returns>
+            <remarks>
+            Override this method to provide custom logging of opening connection, or
+            to provide a proxy IDbConnection.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.OnEndTransaction">
+            <summary>
+            Called when a transaction ends.
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.OnException(System.Exception)">
+            <summary>
+            Called if an exception occurs during processing of a DB operation.  Override to provide custom logging/handling.
+            </summary>
+            <param name="x">The exception instance</param>
+            <returns>True to re-throw the exception, false to suppress it</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.OnExecutedCommand(System.Data.IDbCommand)">
+            <summary>
+            Called on completion of command execution
+            </summary>
+            <param name="cmd">The IDbCommand that finished executing</param>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.OnExecutingCommand(System.Data.IDbCommand)">
+            <summary>
+            Called just before an DB command is executed
+            </summary>
+            <param name="cmd">The command to be executed</param>
+            <remarks>
+            Override this method to provide custom logging of commands and/or
+            modification of the IDbCommand before it is executed
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.OpenSharedConnection">
+            <summary>
+            Open a connection that will be used for all subsequent queries.
+            </summary>
+            <remarks>
+            Calls to Open/CloseSharedConnection are reference counted and should be balanced
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Page``1(System.Int64,System.Int64,System.String,System.Object[],System.String,System.Object[])">
+            <summary>
+            Retrieves a page of records	and the total number of available records
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="page">The 1 based page number to retrieve</param>
+            <param name="itemsPerPage">The number of records per page</param>
+            <param name="sqlCount">The SQL to retrieve the total number of records</param>
+            <param name="countArgs">Arguments to any embedded parameters in the sqlCount statement</param>
+            <param name="sqlPage">The SQL To retrieve a single page of results</param>
+            <param name="pageArgs">Arguments to any embedded parameters in the sqlPage statement</param>
+            <returns>A Page of results</returns>
+            <remarks>
+            This method allows separate SQL statements to be explicitly provided for the two parts of the page query.
+            The page and itemsPerPage parameters are not used directly and are used simply to populate the returned Page object.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Page``1(System.Int64,System.Int64,System.String,System.Object[])">
+            <summary>
+            Retrieves a page of records	and the total number of available records
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="page">The 1 based page number to retrieve</param>
+            <param name="itemsPerPage">The number of records per page</param>
+            <param name="sql">The base SQL query</param>
+            <param name="args">Arguments to any embedded parameters in the SQL statement</param>
+            <returns>A Page of results</returns>
+            <remarks>
+            PetaPoco will automatically modify the supplied SELECT statement to only retrieve the
+            records for the specified page.  It will also execute a second query to retrieve the
+            total number of records in the result set.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Query``1(System.String,System.Object[])">
+            <summary>
+            Runs an SQL query, returning the results as an IEnumerable collection
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="sql">The SQL query</param>
+            <param name="args">Arguments to any embedded parameters in the SQL statement</param>
+            <returns>An enumerable collection of result records</returns>
+            <remarks>
+            For some DB providers, care should be taken to not start a new Query before finishing with
+            and disposing the previous one. In cases where this is an issue, consider using Fetch which
+            returns the results as a List rather than an IEnumerable.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Query``1(System.Type[],System.Object,System.String,System.Object[])">
+            <summary>
+            Performs a multi-poco query
+            </summary>
+            <typeparam name="TRet">The type of objects in the returned IEnumerable</typeparam>
+            <param name="types">An array of Types representing the POCO types of the returned result set.</param>
+            <param name="cb">A callback function to connect the POCO instances, or null to automatically guess the relationships</param>
+            <param name="sql">The SQL query to be executed</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>A collection of POCO's as an IEnumerable</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Save(System.String,System.String,System.Object)">
+            <summary>
+            Saves a POCO by either performing either an SQL Insert or SQL Update
+            </summary>
+            <param name="tableName">The name of the table to be updated</param>
+            <param name="primaryKeyName">The name of the primary key column</param>
+            <param name="poco">The POCO object to be saved</param>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Save(System.Object)">
+            <summary>
+            Saves a POCO by either performing either an SQL Insert or SQL Update
+            </summary>
+            <param name="poco">The POCO object to be saved</param>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Single``2(``1)">
+            <summary>
+            Returns the record with the specified primary key value
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <typeparam name="TKey">The primary key type</typeparam>
+            <param name="primaryKey">The primary key value of the record to fetch</param>
+            <returns>The single record matching the specified primary key value</returns>
+            <remarks>
+            Throws an exception if there are zero or more than one record with the specified primary key value.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.SingleOrDefault``2(``1)">
+            <summary>
+            Returns the record with the specified primary key value, or the default value if not found
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <typeparam name="TKey">The primary key type</typeparam>
+            <param name="primaryKey">The primary key value of the record to fetch</param>
+            <returns>The single record matching the specified primary key value</returns>
+            <remarks>
+            If there are no records with the specified primary key value, default(T) (typically null) is returned.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.SkipTake``1(System.Int64,System.Int64,System.String,System.Object[])">
+            <summary>
+            Retrieves a range of records from result set
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="skip">The number of rows at the start of the result set to skip over</param>
+            <param name="take">The number of rows to retrieve</param>
+            <param name="sql">The base SQL query</param>
+            <param name="args">Arguments to any embedded parameters in the SQL statement</param>
+            <returns>A List of results</returns>
+            <remarks>
+            PetaPoco will automatically modify the supplied SELECT statement to only retrieve the
+            records for the specified range.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Update(System.String,System.String,System.Object,System.Object)">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <param name="tableName">The name of the table to update</param>
+            <param name="primaryKeyName">The name of the primary key column of the table</param>
+            <param name="poco">The POCO object that specifies the column values to be updated</param>
+            <param name="primaryKeyValue">The primary key of the record to be updated</param>
+            <returns>The number of affected records</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Update(System.String,System.String,System.Object,System.Object,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <param name="tableName">The name of the table to update</param>
+            <param name="primaryKeyName">The name of the primary key column of the table</param>
+            <param name="poco">The POCO object that specifies the column values to be updated</param>
+            <param name="primaryKeyValue">The primary key of the record to be updated</param>
+            <param name="columns">The column names of the columns to be updated, or null for all</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Update(System.String,System.String,System.Object)">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <param name="tableName">The name of the table to update</param>
+            <param name="primaryKeyName">The name of the primary key column of the table</param>
+            <param name="poco">The POCO object that specifies the column values to be updated</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Update(System.String,System.String,System.Object,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <param name="tableName">The name of the table to update</param>
+            <param name="primaryKeyName">The name of the primary key column of the table</param>
+            <param name="poco">The POCO object that specifies the column values to be updated</param>
+            <param name="columns">The column names of the columns to be updated, or null for all</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Update(System.Object,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <param name="poco">The POCO object that specifies the column values to be updated</param>
+            <param name="columns">The column names of the columns to be updated, or null for all</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Update(System.Object)">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <param name="poco">The POCO object that specifies the column values to be updated</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Update(System.Object,System.Object)">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <param name="poco">The POCO object that specifies the column values to be updated</param>
+            <param name="primaryKeyValue">The primary key of the record to be updated</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Update(System.Object,System.Object,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <param name="poco">The POCO object that specifies the column values to be updated</param>
+            <param name="primaryKeyValue">The primary key of the record to be updated</param>
+            <param name="columns">The column names of the columns to be updated, or null for all</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Update``1(System.String,System.Object[])">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <typeparam name="T">The POCO class whose attributes specify the name of the table to update</typeparam>
+            <param name="sql">The SQL update and condition clause (ie: everything after "UPDATE tablename"</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IDatabase.Update``1(SS.Data.PetaPoco.Sql)">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <typeparam name="T">The POCO class whose attributes specify the name of the table to update</typeparam>
+            <param name="sql">An SQL builder object representing the SQL update and condition clause (ie: everything after "UPDATE tablename"</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="T:SS.Data.PetaPoco.IgnoreAttribute">
+            <summary>
+            Use the Ignore attribute on POCO class properties that shouldn't be mapped
+            by PetaPoco.
+            </summary>
+        </member>
+        <member name="T:SS.Data.PetaPoco.IMapper">
+            <summary>
+            IMapper provides a way to hook into PetaPoco's Database to POCO mapping mechanism to either
+            customize or completely replace it.
+            </summary>
+            <remarks>
+            To use this functionality, instantiate a class that implements IMapper and then pass it to
+            PetaPoco through the static method Mappers.Register()
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IMapper.GetColumnInfo(System.Reflection.PropertyInfo)">
+            <summary>
+            Get information about the column associated with a property of a POCO
+            </summary>
+            <param name="pocoProperty">The PropertyInfo of the property being queried</param>
+            <returns>A reference to a ColumnInfo instance, or null to ignore this property</returns>
+            <remarks>
+            To create a ColumnInfo from a property's attributes, use PropertyInfo.FromProperty
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IMapper.GetFromDbConverter(System.Reflection.PropertyInfo,System.Type)">
+            <summary>
+            Supply a function to convert a database value to the correct property value
+            </summary>
+            <param name="targetProperty">The target property</param>
+            <param name="sourceType">The type of data returned by the DB</param>
+            <returns>A Func that can do the conversion, or null for no conversion</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IMapper.GetTableInfo(System.Type)">
+            <summary>
+            Get information about the table associated with a POCO class
+            </summary>
+            <param name="pocoType"></param>
+            <returns>A TableInfo instance</returns>
+            <remarks>
+            This method must return a valid TableInfo.
+            To create a TableInfo from a POCO's attributes, use TableInfo.FromPoco
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.IMapper.GetToDbConverter(System.Reflection.PropertyInfo)">
+            <summary>
+            Supply a function to convert a property value into a database value
+            </summary>
+            <param name="sourceProperty">The property to be converted</param>
+            <returns>A Func that can do the conversion</returns>
+            <remarks>
+            This conversion is only used for converting values from POCO's that are
+            being Inserted or Updated.
+            Conversion is not available for parameter values passed directly to queries.
+            </remarks>
+        </member>
+        <member name="T:SS.Data.PetaPoco.Mappers">
+            <summary>
+            This static manages registation of IMapper instances with PetaPoco
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Mappers.GetMapper(System.Type)">
+            <summary>
+            Retrieve the IMapper implementation to be used for a specified POCO type
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Mappers.Register(System.Reflection.Assembly,SS.Data.PetaPoco.IMapper)">
+            <summary>
+            Registers a mapper for all types in a specific assembly
+            </summary>
+            <param name="assembly">The assembly whose types are to be managed by this mapper</param>
+            <param name="mapper">The IMapper implementation</param>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Mappers.Register(System.Type,SS.Data.PetaPoco.IMapper)">
+            <summary>
+            Registers a mapper for a single POCO type
+            </summary>
+            <param name="type">The type to be managed by this mapper</param>
+            <param name="mapper">The IMapper implementation</param>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Mappers.Revoke(System.Reflection.Assembly)">
+            <summary>
+            Remove all mappers for all types in a specific assembly
+            </summary>
+            <param name="assembly">The assembly whose mappers are to be revoked</param>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Mappers.Revoke(System.Type)">
+            <summary>
+            Remove the mapper for a specific type
+            </summary>
+            <param name="type">The type whose mapper is to be removed</param>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Mappers.Revoke(SS.Data.PetaPoco.IMapper)">
+            <summary>
+            Revoke an instance of a mapper
+            </summary>
+            <param name="mapper">The IMapper to be revkoed</param>
+        </member>
+        <member name="T:SS.Data.PetaPoco.Database">
+            <summary>
+            The main PetaPoco Database class.  You can either use this class directly, or derive from it.
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.#ctor(System.Data.IDbConnection)">
+            <summary>
+            Construct a database using a supplied IDbConnection
+            </summary>
+            <param name="connection">The IDbConnection to use</param>
+            <remarks>
+            The supplied IDbConnection will not be closed/disposed by PetaPoco - that remains
+            the responsibility of the caller.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.#ctor(System.String,System.String)">
+            <summary>
+            Construct a database using a supplied connections string and optionally a provider name
+            </summary>
+            <param name="connectionString">The DB connection string</param>
+            <param name="providerName">The name of the DB provider to use</param>
+            <remarks>
+            PetaPoco will automatically close and dispose any connections it creates.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.#ctor(System.String,System.Data.Common.DbProviderFactory)">
+            <summary>
+            Construct a Database using a supplied connection string and a DbProviderFactory
+            </summary>
+            <param name="connectionString">The connection string to use</param>
+            <param name="provider">The DbProviderFactory to use for instantiating IDbConnection's</param>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.#ctor(System.String)">
+            <summary>
+            Construct a Database using a supplied connectionString Name.  The actual connection string and provider will be
+            read from app/web.config.
+            </summary>
+            <param name="connectionStringName">The name of the connection</param>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.CommonConstruct">
+            <summary>
+            Provides common initialization for the various constructors
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Dispose">
+            <summary>
+            Automatically close one open shared connection
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.Database.Connection">
+            <summary>
+            Provides access to the currently open shared connection (or null if none)
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.Database.KeepConnectionAlive">
+            <summary>
+            When set to true the first opened connection is kept alive until this object is disposed
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.CloseSharedConnection">
+            <summary>
+            Releases the shared connection
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.OpenSharedConnection">
+            <summary>
+            Open a connection that will be used for all subsequent queries.
+            </summary>
+            <remarks>
+            Calls to Open/CloseSharedConnection are reference counted and should be balanced
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.AbortTransaction">
+            <summary>
+            Aborts the entire outer most transaction scope
+            </summary>
+            <remarks>
+            Called automatically by Transaction.Dispose()
+            if the transaction wasn't completed.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.BeginTransaction">
+            <summary>
+            Starts a transaction scope, see GetTransaction() for recommended usage
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.CompleteTransaction">
+            <summary>
+            Marks the current transaction scope as complete.
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.GetTransaction">
+             <summary>
+             Starts or continues a transaction.
+             </summary>
+             <returns>An ITransaction reference that must be Completed or disposed</returns>
+             <remarks>
+             This method makes management of calls to Begin/End/CompleteTransaction easier.
+            
+             The usage pattern for this should be:
+            
+             using (var tx = db.GetTransaction())
+             {
+            		// Do stuff
+            		db.Update(...);
+            
+                 // Mark the transaction as complete
+                 tx.Complete();
+             }
+            
+             Transactions can be nested but they must all be completed otherwise the entire
+             transaction is aborted.
+             </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.OnBeginTransaction">
+            <summary>
+            Called when a transaction starts.  Overridden by the T4 template generated database
+            classes to ensure the same DB instance is used throughout the transaction.
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.OnEndTransaction">
+            <summary>
+            Called when a transaction ends.
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.CleanupTransaction">
+            <summary>
+            Internal helper to cleanup transaction
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.EscapeSqlIdentifier(System.String)">
+            <summary>
+            Escapes an arbitary SQL identifier into a format suitable for the associated database provider.
+            </summary>
+            <param name="str">The SQL identifier to be escaped</param>
+            <returns>The escaped identifier</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.AddParam(System.Data.IDbCommand,System.Object,System.Reflection.PropertyInfo)">
+            <summary>
+            Add a parameter to a DB command
+            </summary>
+            <param name="cmd">A reference to the IDbCommand to which the parameter is to be added</param>
+            <param name="value">The value to assign to the parameter</param>
+            <param name="pi">Optional, a reference to the property info of the POCO property from which the value is coming.</param>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.OnConnectionClosing(System.Data.IDbConnection)">
+            <summary>
+            Called when DB connection closed
+            </summary>
+            <param name="conn">The soon to be closed IDBConnection</param>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.OnConnectionOpened(System.Data.IDbConnection)">
+            <summary>
+            Called when DB connection opened
+            </summary>
+            <param name="conn">The newly opened IDbConnection</param>
+            <returns>The same or a replacement IDbConnection</returns>
+            <remarks>
+            Override this method to provide custom logging of opening connection, or
+            to provide a proxy IDbConnection.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.OnException(System.Exception)">
+            <summary>
+            Called if an exception occurs during processing of a DB operation.  Override to provide custom logging/handling.
+            </summary>
+            <param name="x">The exception instance</param>
+            <returns>True to re-throw the exception, false to suppress it</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.OnExecutedCommand(System.Data.IDbCommand)">
+            <summary>
+            Called on completion of command execution
+            </summary>
+            <param name="cmd">The IDbCommand that finished executing</param>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.OnExecutingCommand(System.Data.IDbCommand)">
+            <summary>
+            Called just before an DB command is executed
+            </summary>
+            <param name="cmd">The command to be executed</param>
+            <remarks>
+            Override this method to provide custom logging of commands and/or
+            modification of the IDbCommand before it is executed
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Execute(System.String,System.Object[])">
+            <summary>
+            Executes a non-query command
+            </summary>
+            <param name="sql">The SQL statement to execute</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>The number of rows affected</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.ExecuteScalar``1(System.String,System.Object[])">
+            <summary>
+            Executes a query and return the first column of the first row in the result set.
+            </summary>
+            <typeparam name="T">The type that the result value should be cast to</typeparam>
+            <param name="sql">The SQL query to execute</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>The scalar value cast to T</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Page``1(System.Int64,System.Int64,System.String,System.Object[],System.String,System.Object[])">
+            <summary>
+            Retrieves a page of records	and the total number of available records
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="page">The 1 based page number to retrieve</param>
+            <param name="itemsPerPage">The number of records per page</param>
+            <param name="sqlCount">The SQL to retrieve the total number of records</param>
+            <param name="countArgs">Arguments to any embedded parameters in the sqlCount statement</param>
+            <param name="sqlPage">The SQL To retrieve a single page of results</param>
+            <param name="pageArgs">Arguments to any embedded parameters in the sqlPage statement</param>
+            <returns>A Page of results</returns>
+            <remarks>
+            This method allows separate SQL statements to be explicitly provided for the two parts of the page query.
+            The page and itemsPerPage parameters are not used directly and are used simply to populate the returned Page object.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Page``1(System.Int64,System.Int64,System.String,System.Object[])">
+            <summary>
+            Retrieves a page of records	and the total number of available records
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="page">The 1 based page number to retrieve</param>
+            <param name="itemsPerPage">The number of records per page</param>
+            <param name="sql">The base SQL query</param>
+            <param name="args">Arguments to any embedded parameters in the SQL statement</param>
+            <returns>A Page of results</returns>
+            <remarks>
+            PetaPoco will automatically modify the supplied SELECT statement to only retrieve the
+            records for the specified page.  It will also execute a second query to retrieve the
+            total number of records in the result set.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.BuildPageQueries``1(System.Int64,System.Int64,System.String,System.Object[]@,System.String@,System.String@)">
+            <summary>
+            Starting with a regular SELECT statement, derives the SQL statements required to query a
+            DB for a page of records and the total number of records
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="skip">The number of rows to skip before the start of the page</param>
+            <param name="take">The number of rows in the page</param>
+            <param name="sql">The original SQL select statement</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <param name="sqlCount">Outputs the SQL statement to query for the total number of matching rows</param>
+            <param name="sqlPage">Outputs the SQL statement to retrieve a single page of matching rows</param>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.SkipTake``1(System.Int64,System.Int64,System.String,System.Object[])">
+            <summary>
+            Retrieves a range of records from result set
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="skip">The number of rows at the start of the result set to skip over</param>
+            <param name="take">The number of rows to retrieve</param>
+            <param name="sql">The base SQL query</param>
+            <param name="args">Arguments to any embedded parameters in the SQL statement</param>
+            <returns>A List of results</returns>
+            <remarks>
+            PetaPoco will automatically modify the supplied SELECT statement to only retrieve the
+            records for the specified range.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Query``1(System.String,System.Object[])">
+            <summary>
+            Runs an SQL query, returning the results as an IEnumerable collection
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <param name="sql">The SQL query</param>
+            <param name="args">Arguments to any embedded parameters in the SQL statement</param>
+            <returns>An enumerable collection of result records</returns>
+            <remarks>
+            For some DB providers, care should be taken to not start a new Query before finishing with
+            and disposing the previous one. In cases where this is an issue, consider using Fetch which
+            returns the results as a List rather than an IEnumerable.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Exists``1(System.String,System.Object[])">
+            <summary>
+            Checks for the existance of a row matching the specified condition
+            </summary>
+            <typeparam name="T">The Type representing the table being queried</typeparam>
+            <param name="sqlCondition">The SQL expression to be tested for (ie: the WHERE expression)</param>
+            <param name="args">Arguments to any embedded parameters in the SQL statement</param>
+            <returns>True if a record matching the condition is found.</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Exists``1(System.Object)">
+            <summary>
+            Checks for the existance of a row with the specified primary key value.
+            </summary>
+            <typeparam name="T">The Type representing the table being queried</typeparam>
+            <param name="primaryKey">The primary key value to look for</param>
+            <returns>True if a record with the specified primary key value exists.</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Single``2(``1)">
+            <summary>
+            Returns the record with the specified primary key value
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <typeparam name="TKey">The primary key type</typeparam>
+            <param name="primaryKey">The primary key value of the record to fetch</param>
+            <returns>The single record matching the specified primary key value</returns>
+            <remarks>
+            Throws an exception if there are zero or more than one record with the specified primary key value.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.SingleOrDefault``2(``1)">
+            <summary>
+            Returns the record with the specified primary key value, or the default value if not found
+            </summary>
+            <typeparam name="T">The Type representing a row in the result set</typeparam>
+            <typeparam name="TKey">The primary key type</typeparam>
+            <param name="primaryKey">The primary key value of the record to fetch</param>
+            <returns>The single record matching the specified primary key value</returns>
+            <remarks>
+            If there are no records with the specified primary key value, default(T) (typically null) is returned.
+            </remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Insert(System.String,System.String,System.Object)">
+            <summary>
+            Performs an SQL Insert
+            </summary>
+            <param name="tableName">The name of the table to insert into</param>
+            <param name="primaryKeyName">The name of the primary key column of the table</param>
+            <param name="poco">The POCO object that specifies the column values to be inserted</param>
+            <returns>The auto allocated primary key of the new record</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Insert(System.String,System.String,System.Boolean,System.Object)">
+            <summary>
+            Performs an SQL Insert
+            </summary>
+            <param name="tableName">The name of the table to insert into</param>
+            <param name="primaryKeyName">The name of the primary key column of the table</param>
+            <param name="autoIncrement">True if the primary key is automatically allocated by the DB</param>
+            <param name="poco">The POCO object that specifies the column values to be inserted</param>
+            <returns>The auto allocated primary key of the new record, or null for non-auto-increment tables</returns>
+            <remarks>Inserts a poco into a table.  If the poco has a property with the same name
+            as the primary key the id of the new record is assigned to it.  Either way,
+            the new id is returned.</remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Insert(System.Object)">
+            <summary>
+            Performs an SQL Insert
+            </summary>
+            <param name="poco">The POCO object that specifies the column values to be inserted</param>
+            <returns>The auto allocated primary key of the new record, or null for non-auto-increment tables</returns>
+            <remarks>The name of the table, its primary key and whether it is an auto-allocated primary key are retrieved
+            from the POCO's attributes</remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Update(System.String,System.String,System.Object,System.Object)">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <param name="tableName">The name of the table to update</param>
+            <param name="primaryKeyName">The name of the primary key column of the table</param>
+            <param name="poco">The POCO object that specifies the column values to be updated</param>
+            <param name="primaryKeyValue">The primary key of the record to be updated</param>
+            <returns>The number of affected records</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Update(System.String,System.String,System.Object,System.Object,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <param name="tableName">The name of the table to update</param>
+            <param name="primaryKeyName">The name of the primary key column of the table</param>
+            <param name="poco">The POCO object that specifies the column values to be updated</param>
+            <param name="primaryKeyValue">The primary key of the record to be updated</param>
+            <param name="columns">The column names of the columns to be updated, or null for all</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Update(System.String,System.String,System.Object)">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <param name="tableName">The name of the table to update</param>
+            <param name="primaryKeyName">The name of the primary key column of the table</param>
+            <param name="poco">The POCO object that specifies the column values to be updated</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Update(System.String,System.String,System.Object,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <param name="tableName">The name of the table to update</param>
+            <param name="primaryKeyName">The name of the primary key column of the table</param>
+            <param name="poco">The POCO object that specifies the column values to be updated</param>
+            <param name="columns">The column names of the columns to be updated, or null for all</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Update(System.Object,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <param name="poco">The POCO object that specifies the column values to be updated</param>
+            <param name="columns">The column names of the columns to be updated, or null for all</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Update(System.Object)">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <param name="poco">The POCO object that specifies the column values to be updated</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Update(System.Object,System.Object)">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <param name="poco">The POCO object that specifies the column values to be updated</param>
+            <param name="primaryKeyValue">The primary key of the record to be updated</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Update(System.Object,System.Object,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <param name="poco">The POCO object that specifies the column values to be updated</param>
+            <param name="primaryKeyValue">The primary key of the record to be updated</param>
+            <param name="columns">The column names of the columns to be updated, or null for all</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Update``1(System.String,System.Object[])">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <typeparam name="T">The POCO class whose attributes specify the name of the table to update</typeparam>
+            <param name="sql">The SQL update and condition clause (ie: everything after "UPDATE tablename"</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Update``1(SS.Data.PetaPoco.Sql)">
+            <summary>
+            Performs an SQL update
+            </summary>
+            <typeparam name="T">The POCO class whose attributes specify the name of the table to update</typeparam>
+            <param name="sql">An SQL builder object representing the SQL update and condition clause (ie: everything after "UPDATE tablename"</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Delete(System.String,System.String,System.Object)">
+            <summary>
+            Performs and SQL Delete
+            </summary>
+            <param name="tableName">The name of the table to delete from</param>
+            <param name="primaryKeyName">The name of the primary key column</param>
+            <param name="poco">The POCO object whose primary key value will be used to delete the row</param>
+            <returns>The number of rows affected</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Delete(System.String,System.String,System.Object,System.Object)">
+            <summary>
+            Performs and SQL Delete
+            </summary>
+            <param name="tableName">The name of the table to delete from</param>
+            <param name="primaryKeyName">The name of the primary key column</param>
+            <param name="poco">The POCO object whose primary key value will be used to delete the row (or null to use the supplied primary key value)</param>
+            <param name="primaryKeyValue">The value of the primary key identifing the record to be deleted (or null, or get this value from the POCO instance)</param>
+            <returns>The number of rows affected</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Delete(System.Object)">
+            <summary>
+            Performs an SQL Delete
+            </summary>
+            <param name="poco">The POCO object specifying the table name and primary key value of the row to be deleted</param>
+            <returns>The number of rows affected</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Delete``1(System.Object)">
+            <summary>
+            Performs an SQL Delete
+            </summary>
+            <typeparam name="T">The POCO class whose attributes identify the table and primary key to be used in the delete</typeparam>
+            <param name="pocoOrPrimaryKey">The value of the primary key of the row to delete</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="pocoOrPrimaryKey" /> is <c>null</c>
+            </exception>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Delete``1(System.String,System.Object[])">
+            <summary>
+            Performs an SQL Delete
+            </summary>
+            <typeparam name="T">The POCO class whose attributes specify the name of the table to delete from</typeparam>
+            <param name="sql">The SQL condition clause identifying the row to delete (ie: everything after "DELETE FROM tablename"</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>The number of affected rows</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="sql" /> is <c>null</c>
+            </exception>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Delete``1(SS.Data.PetaPoco.Sql)">
+            <summary>
+            Performs an SQL Delete
+            </summary>
+            <typeparam name="T">The POCO class whose attributes specify the name of the table to delete from</typeparam>
+            <param name="sql">An SQL builder object representing the SQL condition clause identifying the row to delete (ie: everything after "DELETE FROM tablename"</param>
+            <returns>The number of affected rows</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.IsNew(System.String,System.Object)">
+            <summary>
+            Check if a poco represents a new row
+            </summary>
+            <param name="primaryKeyName">The name of the primary key column</param>
+            <param name="poco">The object instance whose "newness" is to be tested</param>
+            <returns>True if the POCO represents a record already in the database</returns>
+            <remarks>This method simply tests if the POCO's primary key column property has been set to something non-zero.</remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.IsNew(System.Object)">
+            <summary>
+            Check if a poco represents a new row
+            </summary>
+            <param name="poco">The object instance whose "newness" is to be tested</param>
+            <returns>True if the POCO represents a record already in the database</returns>
+            <remarks>This method simply tests if the POCO's primary key column property has been set to something non-zero.</remarks>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Save(System.String,System.String,System.Object)">
+            <summary>
+            Saves a POCO by either performing either an SQL Insert or SQL Update
+            </summary>
+            <param name="tableName">The name of the table to be updated</param>
+            <param name="primaryKeyName">The name of the primary key column</param>
+            <param name="poco">The POCO object to be saved</param>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Save(System.Object)">
+            <summary>
+            Saves a POCO by either performing either an SQL Insert or SQL Update
+            </summary>
+            <param name="poco">The POCO object to be saved</param>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.Query``1(System.Type[],System.Object,System.String,System.Object[])">
+            <summary>
+            Performs a multi-poco query
+            </summary>
+            <typeparam name="TRet">The type of objects in the returned IEnumerable</typeparam>
+            <param name="types">An array of Types representing the POCO types of the returned result set.</param>
+            <param name="cb">A callback function to connect the POCO instances, or null to automatically guess the relationships</param>
+            <param name="sql">The SQL query to be executed</param>
+            <param name="args">Arguments to any embedded parameters in the SQL</param>
+            <returns>A collection of POCO's as an IEnumerable</returns>
+        </member>
+        <member name="P:SS.Data.PetaPoco.Database.LastArgs">
+            <summary>
+            Retrieves the arguments to the last execute statement
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.Database.LastCommand">
+            <summary>
+            Returns a formatted string describing the last executed SQL statement and its argument values
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.Database.LastSql">
+            <summary>
+            Retrieves the SQL of the last executed statement
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.FormatCommand(System.Data.IDbCommand)">
+            <summary>
+            Formats the contents of a DB command for display
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Database.FormatCommand(System.String,System.Object[])">
+            <summary>
+            Formats an SQL query and its arguments for display
+            </summary>
+            <param name="sql"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SS.Data.PetaPoco.Database.CommandTimeout">
+            <summary>
+            Sets the timeout value for all SQL statements.
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.Database.EnableAutoSelect">
+            <summary>
+            When set to true, PetaPoco will automatically create the "SELECT columns" part of any query that looks like it needs it
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.Database.EnableNamedParams">
+            <summary>
+            When set to true, parameters can be named ?myparam and populated from properties of the passed in argument values.
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.Database.OneTimeCommandTimeout">
+            <summary>
+            Sets the timeout value for the next (and only next) SQL statement
+            </summary>
+        </member>
+        <member name="T:SS.Data.PetaPoco.PrimaryKeyAttribute">
+            <summary>
+            Specifies the primary key column of a poco class, whether the column is auto incrementing
+            and the sequence name for Oracle sequence columns.
+            </summary>
+        </member>
+        <member name="T:SS.Data.PetaPoco.ResultColumnAttribute">
+            <summary>
+            Marks a poco property as a result only column that is populated in queries
+            but not used for updates or inserts.
+            </summary>
+        </member>
+        <member name="T:SS.Data.PetaPoco.Sql">
+            <summary>
+            A simple helper class for build SQL statements
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Sql.#ctor">
+            <summary>
+            Default, empty constructor
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Sql.#ctor(System.String,System.Object[])">
+            <summary>
+            Construct an SQL statement with the supplied SQL and arguments
+            </summary>
+            <param name="sql">The SQL statement or fragment</param>
+            <param name="args">Arguments to any parameters embedded in the SQL</param>
+        </member>
+        <member name="P:SS.Data.PetaPoco.Sql.Builder">
+            <summary>
+            Instantiate a new SQL Builder object.  Weirdly implemented as a property but makes
+            for more elegantly readble fluent style construction of SQL Statements
+            eg: db.Query(Sql.Builder.Append(....))
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.Sql.Arguments">
+            <summary>
+            Gets the complete, final set of arguments collected by this builder.
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.Sql.SQL">
+            <summary>
+            Returns the final SQL statement represented by this builder
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Sql.Append(SS.Data.PetaPoco.Sql)">
+            <summary>
+            Append another SQL builder instance to the right-hand-side of this SQL builder
+            </summary>
+            <param name="sql">A reference to another SQL builder instance</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Sql.Append(System.String,System.Object[])">
+            <summary>
+            Append an SQL fragement to the right-hand-side of this SQL builder
+            </summary>
+            <param name="sql">The SQL statement or fragment</param>
+            <param name="args">Arguments to any parameters embedded in the SQL</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Sql.From(System.Object[])">
+            <summary>
+            Appends an SQL FROM clause to this SQL builder
+            </summary>
+            <param name="tables">A collection of table names to be used in the FROM clause</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Sql.GroupBy(System.Object[])">
+            <summary>
+            Appends an SQL GROUP BY clause to this SQL builder
+            </summary>
+            <param name="columns">A collection of column names to be grouped by</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Sql.InnerJoin(System.String)">
+            <summary>
+            Appends an SQL INNER JOIN clause to this SQL builder
+            </summary>
+            <param name="table">The name of the table to join</param>
+            <returns>A reference an SqlJoinClause through which the join condition can be specified</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Sql.LeftJoin(System.String)">
+            <summary>
+            Appends an SQL LEFT JOIN clause to this SQL builder
+            </summary>
+            <param name="table">The name of the table to join</param>
+            <returns>A reference an SqlJoinClause through which the join condition can be specified</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Sql.OrderBy(System.Object[])">
+            <summary>
+            Appends an SQL ORDER BY clause to this SQL builder
+            </summary>
+            <param name="columns">A collection of SQL column names to order by</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Sql.Select(System.Object[])">
+            <summary>
+            Appends an SQL SELECT clause to this SQL builder
+            </summary>
+            <param name="columns">A collection of SQL column names to select</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Sql.Where(System.String,System.Object[])">
+            <summary>
+            Appends an SQL WHERE clause to this SQL builder
+            </summary>
+            <param name="sql">The condition of the WHERE clause</param>
+            <param name="args">Arguments to any parameters embedded in the supplied SQL</param>
+            <returns>A reference to this builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="T:SS.Data.PetaPoco.Sql.SqlJoinClause">
+            <summary>
+            The SqlJoinClause is a simple helper class used in the construction of SQL JOIN statements with the SQL builder
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.Sql.SqlJoinClause.On(System.String,System.Object[])">
+            <summary>
+            Appends a SQL ON clause after a JOIN statement
+            </summary>
+            <param name="onClause">The ON clause to be appended</param>
+            <param name="args">Arguments to any parameters embedded in the supplied SQL</param>
+            <returns>A reference to the parent SQL builder, allowing for fluent style concatenation</returns>
+        </member>
+        <member name="T:SS.Data.PetaPoco.StandardMapper">
+            <summary>
+            StandardMapper is the default implementation of IMapper used by PetaPoco
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.StandardMapper.GetColumnInfo(System.Reflection.PropertyInfo)">
+            <summary>
+            Constructs a ColumnInfo for a POCO property by reading its attribute data
+            </summary>
+            <param name="pocoProperty"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SS.Data.PetaPoco.StandardMapper.GetTableInfo(System.Type)">
+            <summary>
+            Constructs a TableInfo for a POCO by reading its attribute data
+            </summary>
+            <param name="pocoType">The POCO Type</param>
+            <returns></returns>
+        </member>
+        <member name="T:SS.Data.PetaPoco.TableInfo">
+            <summary>
+            Use by IMapper to override table bindings for an object
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.TableInfo.AutoIncrement">
+            <summary>
+            True if the primary key column is an auto-incrementing
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.TableInfo.PrimaryKey">
+            <summary>
+            The name of the primary key column of the table
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.TableInfo.SequenceName">
+            <summary>
+            The name of the sequence used for auto-incrementing Oracle primary key fields
+            </summary>
+        </member>
+        <member name="P:SS.Data.PetaPoco.TableInfo.TableName">
+            <summary>
+            The database table name
+            </summary>
+        </member>
+        <member name="M:SS.Data.PetaPoco.TableInfo.FromPoco(System.Type)">
+            <summary>
+            Creates and populates a TableInfo from the attributes of a POCO
+            </summary>
+            <param name="t">The POCO type</param>
+            <returns>A TableInfo instance</returns>
+        </member>
+        <member name="T:SS.Data.PetaPoco.TableNameAttribute">
+            <summary>
+            Sets the DB table name to be used for a Poco class.
+            </summary>
+        </member>
+        <member name="T:SS.Data.PetaPoco.Transaction">
+            <summary>
+            Transaction object helps maintain transaction depth counts
+            </summary>
+        </member>
+    </members>
+</doc>

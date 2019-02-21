@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SS.Model</name>
+    </assembly>
+    <members>
+        <member name="T:SS.Model.DescribableEntity`1">
+            <summary>
+            Represents an object with and Id of type <see cref="!:TKey"/>, name and description.
+            </summary>
+            <typeparam name="TKey">The unique identifier type.</typeparam>
+        </member>
+        <member name="P:SS.Model.DescribableEntity`1.Description">
+            <summary>
+            Gets or sets the entity description.
+            </summary>
+        </member>
+        <member name="T:SS.Model.DescribableEntity">
+            <summary>
+            Represents an object with and Id of type <see cref="T:System.Int32"/>, name and description.
+            </summary>
+        </member>
+        <member name="T:SS.Model.Entity`1">
+            <summary>
+            Model entity base class with Id of type <paramtyperef name="TKey"/>.
+            </summary>
+            <typeparam name="TKey">The unique identifier type.</typeparam>
+        </member>
+        <member name="P:SS.Model.Entity`1.Id">
+            <summary>
+            Gets or sets the entity's unique identifier.
+            </summary>
+        </member>
+        <member name="M:SS.Model.Entity`1.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object" />, is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:SS.Model.Entity`1.Equals(SS.Model.Entity{`0})">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>
+            true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:SS.Model.Entity`1.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+        </member>
+        <member name="T:SS.Model.Entity">
+            <summary>
+            Model entity base class with Id of type <see cref="T:System.Int32"/>.
+            </summary>
+        </member>
+        <member name="M:SS.Model.Entity.Equals(SS.Model.Entity)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>
+            true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+            </returns>
+        </member>
+        <member name="T:SS.Model.EntityEqualityComprarer`1">
+            <summary>
+            Defines methods to support the comparison of entity objects for equality.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="P:SS.Model.EntityEqualityComprarer`1.Default">
+            <summary>
+            Returns a default equality comparer for the type specified by the generic argument.
+            </summary>
+            <value>
+            The default instance of the <see cref="T:SS.Model.EntityEqualityComprarer`1"/> class for type <typeparamref name="TEntity" />.
+            </value>
+        </member>
+        <member name="T:SS.Model.EntityEqualityComprarer`2">
+            <summary>
+            Defines methods to support the comparison of entity objects for equality.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="TKey">The type of the entity key.</typeparam>
+        </member>
+        <member name="M:SS.Model.EntityEqualityComprarer`2.Equals(`0,`0)">
+            <summary>
+            Determines whether the specified entities are equal.
+            </summary>
+            <param name="x">The first object of type <typeparamref name="TEntity" /> to compare.</param>
+            <param name="y">The second object of type <typeparamref name="TEntity" /> to compare.</param>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <returns>
+            true if the specified objects are equal; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:SS.Model.EntityEqualityComprarer`2.GetHashCode(`0)">
+            <summary>
+            Returns a hash code for the specified entity object.
+            </summary>
+            <param name="obj">The entity object for which a hash code is to be returned..</param>
+            <returns>
+            A hash code for the specified object.
+            </returns>
+        </member>
+        <member name="T:SS.Model.IDescribableEntity`1">
+            <summary>
+            Represents a model entity with an unique identifier of type <see cref="!:TKey"/>, a Name property and a Description property.
+            </summary>
+            <typeparam name="TKey">The entity's unique identifier type.</typeparam>
+        </member>
+        <member name="P:SS.Model.IDescribableEntity`1.Description">
+            <summary>
+            Gets or sets the entity description.
+            </summary>
+        </member>
+        <member name="T:SS.Model.IDescribableEntity">
+            <summary>
+            Represents a model entity with an unique identifier of type <see cref="T:System.Int32"/>, a Name property and a Description property.
+            </summary>
+        </member>
+        <member name="T:SS.Model.IEntity`1">
+            <summary>
+            Represents a model entity with an unique identifier of type <see cref="!:TKey"/>.
+            </summary>
+            <typeparam name="TKey">The entity's unique identifier type.</typeparam>
+        </member>
+        <member name="P:SS.Model.IEntity`1.Id">
+            <summary>
+            Gets or sets the entity's unique identifier.
+            </summary>
+        </member>
+        <member name="T:SS.Model.IEntity">
+            <summary>
+            Represents a model entity with an unique identifier of type <see cref="T:System.Int32"/>.
+            </summary>
+        </member>
+        <member name="T:SS.Model.INamedEntity`1">
+            <summary>
+            Represents a model entity with an unique identifier of type <see cref="!:TKey"/> and a Name property.
+            </summary>
+            <typeparam name="TKey">The entity's unique identifier type.</typeparam>
+        </member>
+        <member name="P:SS.Model.INamedEntity`1.Name">
+            <summary>
+            Gets or sets the name of the entity.
+            </summary>
+        </member>
+        <member name="T:SS.Model.INamedEntity">
+            <summary>
+            Represents a model entity with an unique identifier of type <see cref="T:System.Int32"/> and a Name property.
+            </summary>
+        </member>
+        <member name="T:SS.Model.NamedEntity`1">
+            <summary>
+            Represents a model entity with an unique identifier of type <see cref="!:TKey"/> and a Name property.
+            </summary>
+            <typeparam name="TKey">The entity's unique identifier type.</typeparam>
+        </member>
+        <member name="P:SS.Model.NamedEntity`1.Name">
+            <summary>
+            Gets or sets the name of the entity.
+            </summary>
+        </member>
+        <member name="T:SS.Model.NamedEntity">
+            <summary>
+            Represents a model entity with an unique identifier of type <see cref="T:System.Int32"/> and a Name property.
+            </summary>
+        </member>
+        <member name="T:SS.Model.ObservableObject">
+            <summary>
+            Base class for entities that need to implement <see cref="T:System.ComponentModel.INotifyPropertyChanged"/>.
+            </summary>
+        </member>
+        <member name="E:SS.Model.ObservableObject.PropertyChanged">
+            <summary>
+            Occurs when a property value changes.
+            </summary>
+        </member>
+        <member name="M:SS.Model.ObservableObject.OnPropertyChanged(System.String)">
+            <summary>
+            Called when a property value changes.
+            </summary>
+            <param name="propertyName">Name of the property that has changed.</param>
+        </member>
+        <member name="M:SS.Model.ObservableObject.OnPropertyChanged``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Called when a property value changes.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="property">The property expression.</param>
+        </member>
+    </members>
+</doc>

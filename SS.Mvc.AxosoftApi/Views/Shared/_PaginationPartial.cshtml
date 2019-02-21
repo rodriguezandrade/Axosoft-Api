@@ -1,0 +1,13 @@
+﻿<div class="row">
+	<div class="col-sm-4">
+		<p ng-show="page.TotalItems &gt; 0" data-translate="common.SHOWING_PAGE_FROM_TO" 
+			translate-values="{ from: page.ItemsPerPage * (page.CurrentPage - 1) + 1, to: page.TotalItems &lt; page.ItemsPerPage * page.CurrentPage ? page.TotalItems : page.ItemsPerPage * page.CurrentPage, total: page.TotalItems }"></p>
+	</div>
+	<div class="col-sm-8 m-t-15-xs">
+		<nav class="pull-right">
+			<div uib-pagination total-items="page.TotalItems" items-per-page="page.ItemsPerPage" ng-model="page.CurrentPage"
+				boundary-links="true" ng-change="selectPage(page.CurrentPage)"
+				previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></div>
+		</nav>
+	</div>
+</div>

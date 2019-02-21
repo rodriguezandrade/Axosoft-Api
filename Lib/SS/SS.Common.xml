@@ -1,0 +1,271 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SS.Common</name>
+    </assembly>
+    <members>
+        <member name="T:SS.DataAnnotations.EmailAttribute">
+            <summary>
+            Specifies that a data field value must be a valid email address.
+            </summary>
+        </member>
+        <member name="M:SS.DataAnnotations.EmailAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.DataAnnotations.EmailAttribute"/> class.
+            </summary>
+        </member>
+        <member name="T:SS.DataAnnotations.LocalizableString">
+            <summary>
+            A helper class for providing a localizable string property.
+            </summary>
+        </member>
+        <member name="M:SS.DataAnnotations.LocalizableString.#ctor(System.String)">
+            <summary>
+            Constructs a localizable string, specifying the property name associated
+            with this item.  The <paramref name="propertyName"/> value will be used
+            within any exceptions thrown as a result of localization failures.
+            </summary>
+            <param name="propertyName">The name of the property being localized.  This name
+            will be used within exceptions thrown as a result of localization failures.</param>
+        </member>
+        <member name="P:SS.DataAnnotations.LocalizableString.ResourceType">
+            <summary>
+            Gets or sets the resource type to be used for localization.
+            </summary>
+        </member>
+        <member name="P:SS.DataAnnotations.LocalizableString.Value">
+            <summary>
+            Gets or sets the value of this localizable string.  This value can be
+            either the literal, non-localized value, or it can be a resource name
+            found on the resource type supplied to <see cref="M:SS.DataAnnotations.LocalizableString.GetLocalizableValue"/>.
+            </summary>
+        </member>
+        <member name="M:SS.DataAnnotations.LocalizableString.GetLocalizableValue">
+            <summary>
+            Gets the potentially localized value.
+            </summary>
+            <remarks>
+            If <see cref="P:SS.DataAnnotations.LocalizableString.ResourceType"/> has been specified and <see cref="P:SS.DataAnnotations.LocalizableString.Value"/> is not
+            null, then localization will occur and the localized value will be returned.
+            <para>
+            If <see cref="P:SS.DataAnnotations.LocalizableString.ResourceType"/> is null then <see cref="P:SS.DataAnnotations.LocalizableString.Value"/> will be returned
+            as a literal, non-localized string.
+            </para>
+            </remarks>
+            <exception cref="T:System.InvalidOperationException">
+            Thrown if localization fails.  This can occur if <see cref="P:SS.DataAnnotations.LocalizableString.ResourceType"/> has been
+            specified, <see cref="P:SS.DataAnnotations.LocalizableString.Value"/> is not null, but the resource could not be
+            accessed.  <see cref="P:SS.DataAnnotations.LocalizableString.ResourceType"/> must be a public class, and <see cref="P:SS.DataAnnotations.LocalizableString.Value"/>
+            must be the name of a public static string property that contains a getter.
+            </exception>
+            <returns>
+            Returns the potentially localized value.
+            </returns>
+        </member>
+        <member name="M:SS.DataAnnotations.LocalizableString.ClearCache">
+            <summary>
+            Clears any cached values, forcing <see cref="M:SS.DataAnnotations.LocalizableString.GetLocalizableValue"/> to
+            perform evaluation.
+            </summary>
+        </member>
+        <member name="T:SS.Data.TypeHelper">
+            <summary>
+            Extension methods for object data manipulation.
+            </summary>
+        </member>
+        <member name="T:SS.Guard">
+            <summary>
+            Utility class to make checking conditions and throwing exceptions less repetitive.
+            </summary>
+        </member>
+        <member name="M:SS.Guard.Against``1(System.Func{System.Boolean},System.Object[])">
+            <summary>
+            Will throw exception of type <typeparamref name="TException"/>
+            with the specified message if the assertion is true
+            </summary>
+            <typeparam name="TException"></typeparam>
+            <param name="condition">If the function returns <c>true</c>, the exception is thrown.</param>
+            <param name="parameters">The parameters to pass to the exception constructor.</param>
+            <example>
+            Sample usage:
+            <code>
+            <![CDATA[
+            Guard.Against<ArgumentException>(() => string.IsNullOrEmpty(name), "Name must have a value");
+            Guard.Against<ArgumentException>(MyBooleanMethod, "Name must have a value");
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:SS.Guard.Against``1(System.Boolean,System.Object[])">
+            <summary>
+            Will throw exception of type <typeparamref name="TException"/>
+            with the specified message if the assertion is true
+            </summary>
+            <typeparam name="TException"></typeparam>
+            <param name="condition">If set to <c>true</c>, the exception is thrown.</param>
+            <param name="parameters">The parameters to pass to the exception constructor.</param>
+            <example>
+            Sample usage:
+            <code>
+            <![CDATA[
+            Guard.Against<ArgumentException>(string.IsNullOrEmpty(name), "Name must have a value");
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:SS.Guard.GreaterOrEqualThan(System.Int32,System.String,System.Int32)">
+            <summary>
+            Checks if the supplied argument value is grater or equal than the other given value.
+            </summary>
+            <param name="arg">The parameter to check.</param>
+            <param name="name">The parameter name.</param>
+            <param name="testValue">The value to test against.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Argument is less than the supplied test value.</exception>
+        </member>
+        <member name="M:SS.Guard.IsInRange(System.Int32,System.String,System.Int32,System.Int32)">
+            <summary>
+            Checks if the supplied argument value is between the specified minimum and maximum values.
+            </summary>
+            <param name="arg">The parameter to check.</param>
+            <param name="name">The parameter name.</param>
+            <param name="minValue">Mininum value.</param>
+            <param name="maxValue">Maximum value.</param>
+        </member>
+        <member name="M:SS.Guard.NotEmpty(System.String,System.String,System.String)">
+            <summary>
+            Checks the supplied string parameter against <c>null</c> or empty and throws and exception if true.
+            </summary>
+            <param name="arg">The string to check.</param>
+            <param name="name">The parameter name.</param>
+            <param name="message">The message in case the string is empty.</param>
+        </member>
+        <member name="M:SS.Guard.NotEmptyOrWhiteSpace(System.String,System.String,System.String)">
+            <summary>
+            Checks the supplied string parameter against <c>null</c>, empty, or white space and throws an <see cref="T:System.ArgumentException"/> if true.
+            </summary>
+            <param name="arg">The string to check.</param>
+            <param name="name">The parameter name.</param>
+            <param name="message">The message in case the string is empty.</param>
+        </member>
+        <member name="M:SS.Guard.NotNull(System.Object,System.String)">
+            <summary>
+            Checks the given parameter and throws an <see cref="T:System.ArgumentNullException"/> exception if <c>null</c>.
+            </summary>
+            <param name="obj">The parameter value.</param>
+            <param name="name">The parameter name.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:SS.InternalException">
+            <summary>
+            Reprensents an application exception that arises from business rules validation and does not need to be logged.
+            Furthermore, the message is intended to be displayed directly to the user explaining the nature of the error
+            in a user-friendly fashion.
+            </summary>
+        </member>
+        <member name="M:SS.InternalException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.InternalException"/> class.
+            </summary>
+        </member>
+        <member name="M:SS.InternalException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.InternalException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:SS.InternalException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.InternalException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="inner">
+            The exception that is the cause of the current exception, or a null reference (Nothing
+            in Visual Basic) if no inner exception is specified.
+            </param>
+        </member>
+        <member name="M:SS.InternalException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.InternalException"/> class.
+            </summary>
+            <param name="info">
+            The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the
+            serialized object data about the exception being thrown.
+            </param>
+            <param name="context">
+            The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains
+            contextual information about the source or destination.
+            </param>
+        </member>
+        <member name="T:SS.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SS.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SS.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:SS.Properties.Resources.BetweenRange">
+            <summary>
+              Looks up a localized string similar to The value of {0} must be betwen {1} and {2}..
+            </summary>
+        </member>
+        <member name="P:SS.Properties.Resources.FileNotFoundMessage">
+            <summary>
+              Looks up a localized string similar to File not found at &apos;{0}&apos;..
+            </summary>
+        </member>
+        <member name="P:SS.Properties.Resources.GreaterOrEqualThan">
+            <summary>
+              Looks up a localized string similar to The value of {0} must be greater or equal than {1}..
+            </summary>
+        </member>
+        <member name="P:SS.Properties.Resources.GreaterThanNowAttribute_ValidationError">
+            <summary>
+              Looks up a localized string similar to The value of {0} is not greater than today&apos;s date and time..
+            </summary>
+        </member>
+        <member name="P:SS.Properties.Resources.GreaterThanTodayAttribute_ValidationError">
+            <summary>
+              Looks up a localized string similar to The value of {0} is not greater than today&apos;s date..
+            </summary>
+        </member>
+        <member name="P:SS.Properties.Resources.InvalidEmailAddress">
+            <summary>
+              Looks up a localized string similar to Invalid email address..
+            </summary>
+        </member>
+        <member name="P:SS.Properties.Resources.LessThanTodayAttribute_ValidationError">
+            <summary>
+              Looks up a localized string similar to The value of {0} is greater than today&apos;s date..
+            </summary>
+        </member>
+        <member name="P:SS.Properties.Resources.LocalizableString_LocalizationFailed">
+            <summary>
+              Looks up a localized string similar to Cannot retrieve property &apos;{0}&apos; because localization failed.  Type &apos;{1}&apos; is not public or does not contain a public static string property with the name &apos;{2}&apos;..
+            </summary>
+        </member>
+        <member name="P:SS.Properties.Resources.NoCacheFoundForScope">
+            <summary>
+              Looks up a localized string similar to No cache store found with scope {0}..
+            </summary>
+        </member>
+        <member name="P:SS.Properties.Resources.NoPropertyReferenceExpressionFound">
+            <summary>
+              Looks up a localized string similar to No property reference expression was found..
+            </summary>
+        </member>
+        <member name="P:SS.Properties.Resources.UnknownPropertyMessage">
+            <summary>
+              Looks up a localized string similar to Unknown property {0}..
+            </summary>
+        </member>
+    </members>
+</doc>

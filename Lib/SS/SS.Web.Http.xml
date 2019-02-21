@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SS.Web.Http</name>
+    </assembly>
+    <members>
+        <member name="T:SS.Web.Http.ExceptionHandling.SsExceptionLogger">
+            <summary>Represents an unhandled exception logger.</summary>
+        </member>
+        <member name="P:SS.Web.Http.ExceptionHandling.SsExceptionLogger.Logger">
+            <summary>
+            Gets or sets the <see cref="T:SS.Logging.ILogFacade"/> instance to use for logging.
+            </summary>
+        </member>
+        <member name="T:SS.Web.Http.ApiControllerBase">
+            <summary>
+            Provides convenience methods for API controllers.
+            </summary>
+        </member>
+        <member name="M:SS.Web.Http.ApiControllerBase.CreateErrorResponse(System.Net.HttpStatusCode,System.String)">
+            <summary>
+            Creates an <see cref="T:System.Net.Http.HttpResponseMessage"/> with the specified HTTP status code and message.
+            </summary>
+            <param name="code">The HTTP status code.</param>
+            <param name="message">The error message.</param>
+        </member>
+        <member name="M:SS.Web.Http.ApiControllerBase.CreateFileResponse(System.IO.Stream,System.String)">
+            <summary>
+            Creates a <see cref="T:System.Net.Http.HttpResponseMessage"/> from the specified <see cref="T:System.IO.Stream"/> and gives it the specified file name.
+            </summary>
+            <param name="stream">The content stream.</param>
+            <param name="fileName">The name of the file.</param>
+        </member>
+        <member name="M:SS.Web.Http.ApiControllerBase.CreateFileResponse(System.IO.Stream,System.String,System.String)">
+            <summary>
+            Creates a <see cref="T:System.Net.Http.HttpResponseMessage"/> from the specified <see cref="T:System.IO.Stream"/> and gives it the specified file name
+            and MIME type.
+            </summary>
+            <param name="stream">The content stream.</param>
+            <param name="fileName">The name of the file.</param>
+            <param name="mediaType">The MIME type.</param>
+        </member>
+        <member name="M:SS.Web.Http.ApiControllerBase.RaiseHttpError(System.Net.HttpStatusCode,System.String)">
+            <summary>
+            Creates and throws an <see cref="T:System.Web.Http.HttpResponseException"/> with the specified HTTP status code and message.
+            Use this for methods that do not return an <see cref="T:System.Net.Http.HttpResponseMessage"/> object.
+            </summary>
+            <param name="code">The HTTP status code.</param>
+            <param name="message">The error message.</param>
+            <exception cref="T:System.Web.Http.HttpResponseException"></exception>
+        </member>
+        <member name="M:SS.Web.Http.ApiControllerBase.File(System.IO.Stream,System.String)">
+            <summary>
+            Creates a <see cref="T:SS.Web.Http.FileActionResult" />.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream"/> to read the file data from.</param>
+            <param name="fileName">The desired name of the file.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="stream"/> is <c>null</c></exception>
+        </member>
+        <member name="M:SS.Web.Http.ApiControllerBase.File(System.IO.Stream,System.String,System.String)">
+            <summary>
+            Creates a <see cref="T:SS.Web.Http.FileActionResult" />.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream"/> to read the file data from.</param>
+            <param name="fileName">The desired name of the file.</param>
+            <param name="mediaType">The file MIME type.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="stream"/> is <c>null</c></exception>
+        </member>
+        <member name="T:SS.Web.Http.FileActionResult">
+            <summary>
+            Represents an action result that returns a file stream.
+            </summary>
+        </member>
+        <member name="P:SS.Web.Http.FileActionResult.ContentType">
+            <summary>
+            Gets or sets the content type (also known as MIME type). The default is application/octet-stream.
+            </summary>
+        </member>
+        <member name="P:SS.Web.Http.FileActionResult.FileName">
+            <summary>
+            Gets or sets the desired name of the file.
+            </summary>
+        </member>
+        <member name="M:SS.Web.Http.FileActionResult.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Web.Http.FileActionResult" /> class.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream"/> to read the file data from.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="stream"/> is <c>null</c></exception>
+        </member>
+        <member name="M:SS.Web.Http.FileActionResult.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Web.Http.FileActionResult" /> class.
+            </summary>
+            <param name="contentBytes">The file content bytes.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="contentBytes"/> is <c>null</c></exception>
+        </member>
+        <member name="M:SS.Web.Http.FileActionResult.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Creates the <see cref="T:System.Net.Http.HttpResponseMessage" /> for the file content.
+            </summary>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>
+            A task that, when completed, contains the <see cref="T:System.Net.Http.HttpResponseMessage" />.
+            </returns>
+        </member>
+        <member name="T:SS.Web.Http.Filters.ApiAuthorizeAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SS.Web.Http.Filters.ApiAuthorizeAttribute.LoginUrl">
+            <summary>
+            Gets or sets the login URL.
+            </summary>
+        </member>
+        <member name="M:SS.Web.Http.Filters.ApiAuthorizeAttribute.HandleUnauthorizedRequest(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            Processes requests that fail authorization.
+            </summary>
+            <param name="actionContext">The context.</param>
+            <exception cref="T:System.ArgumentNullException">The actionContext parameter is <c>null</c></exception>
+        </member>
+        <member name="T:SS.Web.Http.Filters.ModelValidationFilterAttribute">
+            <summary>
+            Checks the ModelState validity and issues a BadRequest (400) HTTP response if invalid.
+            </summary>
+        </member>
+        <member name="M:SS.Web.Http.Filters.ModelValidationFilterAttribute.OnActionExecuting(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            Occurs before the action method is invoked.
+            </summary>
+            <param name="actionContext">The action context.</param>
+        </member>
+        <member name="T:SS.Web.Http.RequireHttpsHandler">
+            <summary>
+            Applying this handler requires requests to be sent using HTTPS.
+            If the request was not sent via HTTPS this handler returns a body explaining where to find the requested resource and automatically redirects the caller if possible.
+            </summary>
+        </member>
+        <member name="M:SS.Web.Http.RequireHttpsHandler.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:SS.Web.Http.RequireHttpsHandler" /> class.</summary>
+        </member>
+        <member name="M:SS.Web.Http.RequireHttpsHandler.#ctor(System.Int32)">
+            <summary>Initializes a new instance of the <see cref="T:SS.Web.Http.RequireHttpsHandler" /> class.</summary>
+            <param name="httpsPort">The HTTPS port.</param>
+        </member>
+        <member name="M:SS.Web.Http.RequireHttpsHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <summary>Sends an HTTP request to the inner handler to send to the server as an asynchronous operation.</summary>
+            <param name="request">The HTTP request message to send to the server.</param>
+            <param name="cancellationToken">A cancellation token to cancel operation.</param>
+            <returns>Returns <see cref="T:System.Threading.Tasks.Task`1" />. The task object representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:SS.Web.Http.RequireHttpsHandler.CreateResponse(System.Net.Http.HttpRequestMessage)">
+            <summary>Creates the response based on the request method.</summary>
+            <remarks><para>If the request method was GET, the caller is automatically redirected (Code 302). Otherwise, a 404 is returned.</para>
+            <para>Based on http://blogs.msdn.com/b/carlosfigueira/archive/2012/03/09/implementing-requirehttps-with-asp-net-web-api.aspx</para></remarks>
+            <param name="request">The request.</param>
+            <returns>The response based on the request method.</returns>
+        </member>
+    </members>
+</doc>

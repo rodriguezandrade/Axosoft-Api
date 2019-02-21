@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="body" xml:space="preserve">
+    <value>&lt;div class=""&gt;&lt;div class="aHl"&gt;&lt;/div&gt;&lt;div id=":lr" tabindex="-1"&gt;&lt;/div&gt;&lt;div id=":lg" class="ii gt"&gt;&lt;div id=":lf" class="a3s aXjCH msg-9135207026715358745"&gt;&lt;div class="adM"&gt;
+
+
+
+
+
+&lt;/div&gt;&lt;div bgcolor="#eeeeee"&gt;&lt;div class="adM"&gt;
+
+&lt;/div&gt;&lt;table bgcolor="#eeeeee" border="0" cellpadding="0" cellspacing="0" height="100%" style="height:100%" width="100%"&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td align="center" style="padding:30px 30px 0" valign="middle"&gt;
+&lt;table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="520"&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;&lt;img alt="Welcome to BambooHR" height="192" src="https://ci3.googleusercontent.com/proxy/CxCXxbA4eWLbBBO18qAfiB42QIIFh5qOaMzadEU6oh5x_xTjpkCEKgbOXd2Ij2CB7u6UhpC1843_DSnYDMxjCFPkFuwPyACYfqif3hoSPzIC=s0-d-e1-ft#http://app.bamboohr.com/images/emails/header-trial-welcome.jpg" style="margin-bottom:3px;display:block" width="520" class="CToWUd a6T" tabindex="0"&gt;&lt;div class="a6S" dir="ltr" style="opacity: 0.01; left: 880.636px; top: 186px;"&gt;&lt;div id=":o4" class="T-I J-J5-Ji aQv T-I-ax7 L3 a5q" role="button" tabindex="0" aria-label="Descargar el archivo adjunto " data-tooltip-class="a1V" data-tooltip="Descargar"&gt;&lt;div class="aSK J-J5-Ji aYr"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center" bgcolor="#3a3a3a" height="46" style="font-family:Arial,Helvetica,san-serif;font-size:18px;color:#ffffff"&gt;
+					  A few things you may want to know
+				  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;img alt="" height="10" src="https://ci5.googleusercontent.com/proxy/3adHFbG4blI5rtXzWe3jwF41jiiIUfZ5BbrBRVJl9hCUhUsSyKw1oHlOxgZu-4HWxIfteaHG21jHlC1FVLwhMHHMTL3cP9M4tG9vSg=s0-d-e1-ft#http://app.bamboohr.com/images/emails/arrow-gray-down.png" style="display:block" width="23" class="CToWUd"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;table border="0" cellpadding="0" cellspacing="0" style="margin:27px auto 0" width="380"&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td style="padding-right:27px" valign="top"&gt;&lt;div style="margin-top:5px;width:30px;height:31px;background-color:#82af13"&gt;&lt;img alt="" height="31" src="https://ci3.googleusercontent.com/proxy/esxJ5weThWjU7eGSYyr4c6cdnhsENW9wSjAX4fTPTFcrxOD0hd_j0lRnUHOT5L-Bmz5JEFU6KjToAI4f09ZPjc5awhKnXxRROKu-4evyppfnOEV_NJQ-01M=s0-d-e1-ft#http://app.bamboohr.com/images/emails/icons/color-branded/calendar.png" style="display:block" width="30" class="CToWUd"&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;h2 style="margin-top:0;margin-bottom:0;font-family:Arial,Helvetica,san-serif;font-size:18px;color:#3a3a3a"&gt;
+									  Schedule a Demo
+								  &lt;/h2&gt;
+&lt;p style="margin-top:3px;margin-bottom:17px;font-family:Arial,Helvetica,san-serif;font-size:14px;color:#222222"&gt;
+									  We want to make sure that you are successful. And we would love to personally show you around and help you to get comfortable. Just click the button below to select a time for your free demo walkthrough.
+								  &lt;/p&gt;
+&lt;table border="0" cellpadding="0" cellspacing="0"&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td bgcolor="#82af13" style="border:solid #699600 1px;border-radius:3px"&gt;
+&lt;a href="http://www.bamboohr.com/live-demo/" style="display:inline-block;padding:10px 20px 11px;color:#ffffff;text-decoration:none;font-family:Arial,Helvetica,san-serif;font-weight:700;font-size:15px" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://www.bamboohr.com/live-demo/&amp;amp;source=gmail&amp;amp;ust=1550699392564000&amp;amp;usg=AFQjCNHvxrzZeCdCQMe999VesuHwaHQCQg"&gt;
+												  Schedule Your Demo
+											  &lt;/a&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p style="margin-top:7px;margin-bottom:30px;font-family:Arial,Helvetica,san-serif;font-size:14px;color:#222222"&gt;
+									  or call us at &lt;strong&gt;1-866-387-9595&lt;/strong&gt;
+&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding-right:27px" valign="top"&gt;&lt;img alt="" height="32" src="https://ci6.googleusercontent.com/proxy/OR00lDyehml1LOpiRvqAueAy2ah4otZWVRMaeDDSh4sDwfkGJweNPJvLzZPYfJT4GOKM9vPqo8DFfISDa3ClPTJE1fpCItU=s0-d-e1-ft#http://app.bamboohr.com/images/emails/icons/link.png" style="margin-top:5px;display:block" width="32" class="CToWUd"&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;h2 style="margin-top:0;margin-bottom:0;font-family:Arial,Helvetica,san-serif;font-size:18px;color:#3a3a3a"&gt;
+									  Your Website
+								  &lt;/h2&gt;
+&lt;p style="margin-top:3px;margin-bottom:31px;font-family:Arial,Helvetica,san-serif;font-size:14px;color:#222222"&gt;
+									  Below is the link to your BambooHR account. We recommend bookmarking it for future reference. Remember, your email address is your username.
+									  &lt;br&gt;
+&lt;a class="m_-9135207026715358745link" href="http://rodriguezandrade.bamboohr.com?utm_swu=2926" style="text-decoration:none;color:#006ec2" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://rodriguezandrade.bamboohr.com?utm_swu%3D2926&amp;amp;source=gmail&amp;amp;ust=1550699392564000&amp;amp;usg=AFQjCNEFpqbALB_eXIFsxLYPdZCi6LA4Zw"&gt;
+                      rodriguezandrade.bamboohr.com
+                    &lt;/a&gt;
+&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding-right:27px" valign="top"&gt;&lt;div style="margin-top:5px;width:32px;height:32px;background-color:#82af13"&gt;&lt;img alt="" height="32" src="https://ci6.googleusercontent.com/proxy/Ps2N2-dlRBroz4qHfPXcXmP4zO_syDpaKlZE82JoSjZdcVtSQLH_nJsBismXAcLcdhukGucVTb8I1YKNapOoE74LpYF0uPonXlUWjPUDiKtmVsPW72k=s0-d-e1-ft#http://app.bamboohr.com/images/emails/icons/color-branded/clock.png" style="display:block" width="32" class="CToWUd"&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;h2 style="margin-top:0;margin-bottom:0;font-family:Arial,Helvetica,san-serif;font-size:18px;color:#3a3a3a"&gt;Trial Period&lt;/h2&gt;
+&lt;p style="margin-top:3px;margin-bottom:17px;font-family:Arial,Helvetica,san-serif;font-size:14px;color:#222222"&gt;
+									  Your trial period gives you complete access to BambooHR for 7 days. If you think you'll need more time, please let us know. Your trial is set
+										to expire on 
+										&lt;br&gt;
+&lt;strong&gt;
+										February 26, 2019 at 11:59 pm.
+										&lt;/strong&gt;
+&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan="2"&gt;
+&lt;p style="margin-top:23px;margin-bottom:15px;font-family:Arial,Helvetica,san-serif;font-size:14px;color:#222222"&gt;
+							      We are here to make your job easier. After using BambooHR you will wonder how you ever got by without it. Please reach out if you have any questions and, if you get a chance, please schedule a time for a demo.
+							    &lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="right" colspan="2"&gt;&lt;img alt="The BambooHR Team" height="25" src="https://ci3.googleusercontent.com/proxy/Iis9oXFqzNZRCj5jIacnftETK-J_3hheo5X2kmRHCB4vwKtBmXRT9pNM0KPWe2OoxiaVpwDbPVr00M_DZV553VIfI3NwRoFV75K6SDOnnLdbcWHd=s0-d-e1-ft#http://app.bamboohr.com/images/emails/bamboohr-team-signature.gif" style="display:block" width="210" class="CToWUd"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;table border="0" cellpadding="0" cellspacing="0" style="margin:31px 19px 0;width:482px;height:35px;border-top:solid #afafaf 1px"&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td style="font-family:Arial,Helvetica,san-serif;font-size:12px;color:#969696"&gt;&lt;img alt="phone" height="11" src="https://ci6.googleusercontent.com/proxy/pTClJ1Rwe7WjCwZ1zfeHNjMdFBP-aUJfCIjeMiLRXLOVjnZhcO9O7U3magqZdrwsvCqNJgU89EwdjN3wIQQGeO6wJb_-KTNEozbl=s0-d-e1-ft#http://app.bamboohr.com/images/emails/icons/phone-sm.png" style="vertical-align:middle;margin-right:7px" width="12" class="CToWUd"&gt; 1-866-387-9595&lt;/td&gt;
+&lt;td align="center"&gt;&lt;a href="mailto:support@bamboohr.com" style="text-decoration:none;font-family:Arial,Helvetica,san-serif;font-size:12px;color:#969696" target="_blank"&gt;&lt;img alt="email" border="0" height="8" src="https://ci6.googleusercontent.com/proxy/-OkfsDxdMS5oIoiaU22O0DVeek-U7KpGr857oRHsIe1TdVuB9nRMxOkSD8R_55jmb8Ovifv4rvBFDplCWtZW9pl71vO1q0uCoi3E=s0-d-e1-ft#http://app.bamboohr.com/images/emails/icons/email-sm.png" style="vertical-align:middle;margin-right:7px" width="11" class="CToWUd"&gt; support@bamboohr.com&lt;/a&gt;&lt;/td&gt;
+&lt;td align="right"&gt;&lt;a href="http://bamboohr.com?utm_swu=360" style="text-decoration:none;font-family:Arial,Helvetica,san-serif;font-size:12px;color:#969696" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://bamboohr.com?utm_swu%3D360&amp;amp;source=gmail&amp;amp;ust=1550699392564000&amp;amp;usg=AFQjCNGJjqarcr-jA-pAsBhqthbxYoBdmw"&gt;&lt;img alt="link" border="0" height="12" src="https://ci5.googleusercontent.com/proxy/Ci46C-VUOcIc6LKvPpRwkFcBtODI_NtHarGV5l7UjzJbF7N1F6BpfOjGLHRe0UHLezdLkJPysWmhCdYmqCqvUoJjdykDaUou5Is=s0-d-e1-ft#http://app.bamboohr.com/images/emails/icons/link-sm.png" style="vertical-align:middle;margin-right:7px" width="12" class="CToWUd"&gt; bamboohr.com&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center" style="padding-top:6px;padding-bottom:30px"&gt;
+&lt;table border="0" cellpadding="0" cellspacing="0" width="518"&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td style="padding:2px 0 0 5px"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td align="right" style="padding:2px 5px 0 0;font-family:Arial,Helvetica,san-serif;font-size:11px;color:#888888"&gt;Powered by &lt;a href="http://www.bamboohr.com?utm_swu=6225" title="BambooHR" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://www.bamboohr.com?utm_swu%3D6225&amp;amp;source=gmail&amp;amp;ust=1550699392564000&amp;amp;usg=AFQjCNFXZpWd9G1ZI0hsUzjgFVZCxwyekg"&gt;&lt;img alt="BambooHR" border="0" height="15" src="https://ci6.googleusercontent.com/proxy/ywrS2H8nnxCnsFwkfTG2-uCSzJ-34-hQbSWl1PN5SmeEvSLiTaBjrfsdDlnxQNrl6kbMVesZ2kLk4n8ncxdSv6KwRdvAg2JgtcU=s0-d-e1-ft#http://app.bamboohr.com/images/emails/logo-bamboohr.png" width="95" class="CToWUd"&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;img width="1px" height="1px" alt="" src="https://ci4.googleusercontent.com/proxy/iLCq0g797CWhckYyWTGS91bkVdobbfxiTzDsQ4rlXpWXtxQwKfZo2lEr4leRxbHyGvC00O9u5oKKef_xDx23ocxFplWqvO8qON2OHcjulX0Uksw6wx9hZNBSvdq50VH6tf2_yn8njg1UQtTarg4tp8-SXYJH9xEEovKgJ0wCs9Y0dsQceXz3FdzMAJUvnOhAQG0aIlFulNfp9VFsmT79CBZIUoDxX69YTB20lqLkhaLvx67rZc6BQS0SaTpQsIpi3Snu4ZZX8QzFzON5Lwp_ETQdhabxGUYsJ45P6pNkFTWSO7HdHQRnrL0Ww91il_7jrrfqL958Ce1SYFq-KUrj4hKUqhWf2jIc8OejK7t__mVFYT_eHtwFshDZuTWwno9nV5HWQ8rw1R3D1xgDna9XexBjwLvvC0hnemCoF9vjF-_2sSMdiPFvO2x4IDucoNXOiEk3XKzcN-r8OIqP0XE=s0-d-e1-ft#http://email.app.bamboohr.com/o/eJxNj7tqwzAARb-m2ir0siQPHuLSGAoBD4FmE3o6buJIyHKcz6-6dTvDgXvuum-q-CXddfHq6fM6x4eaXVdRueliZdlf1nywcpNT_g7t-WsfgOssEyB76-dU_ux7nFTQiFIZjEU4MEtagXWwLcdV9cZI9k7B3BGEW0RwizkmGEMMKWqOPT40B46YFJ_8jSGdEjR6MTFeM7RxAddOoEA4stI74T1thBOs4aaSo0QK7cH6_0YNqqySmYb-kn5u03iU59OptyEPIw8gd1nXne2hn9C7DS4vULoxR_cLboJWrA" class="CToWUd"&gt;&lt;/div&gt;&lt;div class="yj6qo"&gt;&lt;/div&gt;&lt;div class="adL"&gt;
+
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div id=":me" class="ii gt" style="display:none"&gt;&lt;div id=":mf" class="a3s aXjCH undefined"&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hi"&gt;&lt;/div&gt;&lt;/div&gt;</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ImageUrl" xml:space="preserve">
+    <value>jonathan.jpg</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NameImage" xml:space="preserve">
+    <value>fotoJonathan</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="BodyTest" xml:space="preserve">
+    <value>&lt;img src='cid:{0}'&gt;&lt;p&gt;Hi,&lt;/p&gt;&lt;p&gt;Please &lt;b&gt;&lt;a style='cursor:pointer;'  href='{1}/menusurvey/{2}'&gt;CLICK HERE&lt;/a&gt;&lt;/b&gt; to go to the Dinner app and fill the Survey to confirm your meals.&lt;/p&gt;&lt;p&gt;Its very important to confirm your meals &lt;b&gt; into 30 hours&lt;/b&gt; otherwise we should not be able to serve your lunch.&lt;/p&gt;&lt;p&gt;If you have any questions or concern, please let the &lt;b&gt; Administrator &lt;/b&gt; know.&lt;/p&gt;&lt;p&gt;Thank you for helping us improve our business and provide a better service!.&lt;/p&gt;&lt;p&gt;Regards,&lt;/p&gt;&lt;p&gt;&lt;b&gt;Dinner Team &lt;/b&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="TittleMail" xml:space="preserve">
+    <value>Prueba Correo</value>
+  </data>
+</root>

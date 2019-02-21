@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SS.Logging.NLog</name>
+    </assembly>
+    <members>
+        <member name="M:SS.Logging.NLog.NLogLogFacade.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Logging.NLog.NLogLogFacade"/> class.
+            </summary>
+            <param name="sourceType">Type of the source.</param>
+            <exception cref="T:System.ArgumentNullException">sourceType is <c>null</c>.</exception>
+        </member>
+        <member name="M:SS.Logging.NLog.NLogLogFacade.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Logging.NLog.NLogLogFacade"/> class.
+            </summary>
+            <param name="name">The name of the logger.</param>
+            <exception cref="T:System.ArgumentNullException">name</exception>
+        </member>
+        <member name="M:SS.Logging.NLog.NLogLogFacade.Debug(System.String,System.Object[])">
+            <summary>
+            Logs a debug message
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The args.</param>
+        </member>
+        <member name="M:SS.Logging.NLog.NLogLogFacade.Error(System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs an error message
+            </summary>
+            <param name="exception">The exception.</param>
+            <param name="format">The format.</param>
+            <param name="args">The args.</param>
+        </member>
+        <member name="M:SS.Logging.NLog.NLogLogFacade.Info(System.String,System.Object[])">
+            <summary>
+            Logs an information message
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The args.</param>
+        </member>
+        <member name="M:SS.Logging.NLog.NLogLogFacade.Warn(System.String,System.Object[])">
+            <summary>
+            Logs a warn message
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The args.</param>
+        </member>
+        <member name="M:SS.Logging.NLog.NLogLogFacade.Fatal(System.String,System.Object[])">
+            <summary>
+            Logs a fatal message.
+            </summary>
+            <param name="format">The format.</param>
+            <param name="args">The args.</param>
+        </member>
+    </members>
+</doc>

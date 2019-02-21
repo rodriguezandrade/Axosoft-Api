@@ -1,0 +1,21 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+	ViewBag.Title = Resources.InternalServerError;
+}
+
+<div class="container container-bordered">
+
+	<div class="text-center">
+		<h2>@ViewBag.Title</h2>
+		@if (Context.IsDebuggingEnabled && Model != null && Model.Exception != null)
+		{
+			<p class="lead">@Model.Exception.Message</p>
+			<pre>@Html.Raw(@Model.Exception.StackTrace)</pre>
+		}
+		else
+		{
+			<p>An internal error has occurred.</p>
+		}
+	</div>
+</div>

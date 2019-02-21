@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SS.Caching</name>
+    </assembly>
+    <members>
+        <member name="T:SS.Caching.CacheScope">
+            <summary>
+            Specifies the cache scope.
+            </summary>
+        </member>
+        <member name="F:SS.Caching.CacheScope.Application">
+            <summary>
+            The cache scope will be the entire application.
+            </summary>
+        </member>
+        <member name="F:SS.Caching.CacheScope.Session">
+            <summary>
+            The application scope will be the current user session.
+            </summary>
+        </member>
+        <member name="T:SS.Caching.CacheStoreExportAttribute">
+            <summary>
+            Provides metadata information for an <see cref="T:SS.Caching.ICacheStore"/>.
+            </summary>
+        </member>
+        <member name="M:SS.Caching.CacheStoreExportAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Caching.CacheStoreExportAttribute"/> class.
+            </summary>
+        </member>
+        <member name="P:SS.Caching.CacheStoreExportAttribute.Scope">
+            <summary>
+            Gets or sets the cache scope for the related <see cref="T:SS.Caching.ICacheStore" /> object.
+            </summary>
+        </member>
+        <member name="T:SS.Caching.CacheStoreExtensions">
+            <summary>
+            Description of CacheStoreExtensions.
+            </summary>
+        </member>
+        <member name="M:SS.Caching.CacheStoreExtensions.Add``1(SS.Caching.ICacheStore,System.String,``0)">
+            <summary>
+            Adds the specified value.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cache">The <see cref="T:SS.Caching.ICacheStore"/> instance.</param>
+            <param name="key">The entry key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:SS.Caching.CacheStoreExtensions.Get``1(SS.Caching.ICacheStore,System.String,System.Func{``0})">
+            <summary>
+            Gets the value of the specified key; if not found, gets the value executing the supplied factory and stores it using the key.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cache">The <see cref="T:SS.Caching.ICacheStore"/> instance.</param>
+            <param name="key">The entry key.</param>
+            <param name="factory">The factory.</param>
+        </member>
+        <member name="M:SS.Caching.CacheStoreExtensions.Get``1(SS.Caching.ICacheStore,System.String,System.Func{``0},System.TimeSpan)">
+            <summary>
+            Gets the value of the specified key; if not found, gets the value executing the supplied factory and stores it using the key.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cache">The <see cref="T:SS.Caching.ICacheStore"/> instance.</param>
+            <param name="key">The key.</param>
+            <param name="factory">The factory.</param>
+            <param name="expiration">The expiration value.</param>
+        </member>
+        <member name="T:SS.Caching.CacheStoreFactoryDelegate">
+            <summary>
+            Delegate used to create instances of <see cref="T:SS.Caching.ICacheStore"/> objects.
+            </summary>
+            <param name="scope">The cache scope scope.</param>
+            <returns></returns>
+        </member>
+        <member name="T:SS.Caching.CacheStoreFactory">
+            <summary>
+            Creates instances of type <see cref="T:SS.Caching.ICacheStore"/>.
+            </summary>
+        </member>
+        <member name="M:SS.Caching.CacheStoreFactory.#ctor(System.Collections.Generic.IEnumerable{System.Lazy{SS.Caching.ICacheStore,SS.Caching.ICacheStoreMetadata}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Caching.CacheStoreFactory"/> class.
+            </summary>
+            <param name="cacheStores">The available cache stores.</param>
+        </member>
+        <member name="M:SS.Caching.CacheStoreFactory.Create(SS.Caching.CacheScope)">
+            <summary>
+            Returns an instance of a <see cref="T:SS.Caching.ICacheStore" /> base on the specified scope.
+            </summary>
+            <param name="scope">The cache scope.</param>
+            <exception cref="T:System.ApplicationException"></exception>
+        </member>
+        <member name="T:SS.Caching.DummyCacheStore">
+            <summary>
+            A cache service without a real implementation (does not cache anything). Useful for development purposes,
+            to force the constant refreshing cacheable data.
+            </summary>
+        </member>
+        <member name="M:SS.Caching.DummyCacheStore.Add``1(System.String,``0,System.TimeSpan)">
+            <summary>
+            Adds the specified value.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+            <param name="expiration">The expiration.</param>
+        </member>
+        <member name="M:SS.Caching.DummyCacheStore.Clear">
+            <summary>
+            Clears the cache.
+            </summary>
+        </member>
+        <member name="M:SS.Caching.DummyCacheStore.Exists(System.String)">
+            <summary>
+            Checks if a value with the specified key exists.
+            </summary>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SS.Caching.DummyCacheStore.Get``1(System.String,``0@)">
+            <summary>
+            Gets the value of the specified key.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SS.Caching.DummyCacheStore.Remove(System.String)">
+            <summary>
+            Removes the item with the specified key.
+            </summary>
+            <param name="key">The key.</param>
+        </member>
+        <member name="T:SS.Caching.ICacheStore">
+            <summary>
+            Represents a cache store.
+            </summary>
+        </member>
+        <member name="P:SS.Caching.ICacheStore.DefaultExpiration">
+            <summary>
+            Gets the default expiration value.
+            </summary>
+        </member>
+        <member name="M:SS.Caching.ICacheStore.Add``1(System.String,``0,System.TimeSpan)">
+            <summary>
+            Adds the specified value.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+            <param name="expiration">The expiration.</param>
+        </member>
+        <member name="M:SS.Caching.ICacheStore.Clear">
+            <summary>
+            Clears the cache.
+            </summary>
+        </member>
+        <member name="M:SS.Caching.ICacheStore.Exists(System.String)">
+            <summary>
+            Checks if a value with the specified key exists.
+            </summary>
+            <param name="key">The key.</param>
+        </member>
+        <member name="M:SS.Caching.ICacheStore.Get``1(System.String,``0@)">
+            <summary>
+            Gets the value of the specified key.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:SS.Caching.ICacheStore.Remove(System.String)">
+            <summary>
+            Removes the item with the specified key.
+            </summary>
+            <param name="key">The key.</param>
+        </member>
+        <member name="P:SS.Caching.ICacheStore.Count">
+            <summary>
+            Gets the numer of entries in the cache.
+            </summary>
+        </member>
+        <member name="T:SS.Caching.ICacheStoreFactory">
+            <summary>
+            Creates instances of type <see cref="T:SS.Caching.ICacheStore"/>.
+            </summary>
+        </member>
+        <member name="M:SS.Caching.ICacheStoreFactory.Create(SS.Caching.CacheScope)">
+            <summary>
+            Returns an instance of a <see cref="T:SS.Caching.ICacheStore"/> base on the specified scope.
+            </summary>
+            <param name="scope">The cache scope.</param>
+        </member>
+        <member name="T:SS.Caching.ICacheStoreMetadata">
+            <summary>
+            Provides metadata information for an <see cref="T:SS.Caching.ICacheStore"/>.
+            </summary>
+        </member>
+        <member name="P:SS.Caching.ICacheStoreMetadata.Scope">
+            <summary>
+            Gets the cache scope for the related <see cref="T:SS.Caching.ICacheStore"/> object.
+            </summary>
+        </member>
+        <member name="T:SS.Caching.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SS.Caching.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SS.Caching.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:SS.Caching.Properties.Resources.NoCacheFoundForScope">
+            <summary>
+              Looks up a localized string similar to No cache store found with scope {0}..
+            </summary>
+        </member>
+    </members>
+</doc>

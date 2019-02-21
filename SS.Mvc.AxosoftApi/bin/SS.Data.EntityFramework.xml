@@ -1,0 +1,482 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SS.Data.EntityFramework</name>
+    </assembly>
+    <members>
+        <member name="T:SS.Data.EntityFramework.EfRepositoryBase`2">
+            <summary>
+            Represents a generic Entity Framework repository for entities of type <see param="TEntity"/>.
+            </summary>
+            <typeparam name="TEntity">The type of entity.</typeparam>
+            <typeparam name="TKey">The type of the entity's unique identifier.</typeparam>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfRepositoryBase`2.#ctor(SS.Data.EntityFramework.IWorkspace)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Data.EntityFramework.EfRepositoryBase`2"/> class.
+            </summary>
+            <param name="workspace">The workspace.</param>
+            <remarks></remarks>
+        </member>
+        <member name="P:SS.Data.EntityFramework.EfRepositoryBase`2.EnableTracking">
+            <summary>
+            Gets or sets a value indicating whether this instance is read only.
+            </summary>
+            <value><c>true</c> if this instance is read only; otherwise, <c>false</c>.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:SS.Data.EntityFramework.EfRepositoryBase`2.Workspace">
+            <summary>
+            Gets the workspace object used by this repository.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfRepositoryBase`2.Add(`0)">
+            <summary>
+            Adds the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfRepositoryBase`2.Delete(`0)">
+            <summary>
+            Deletes the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfRepositoryBase`2.Get(`1)">
+            <summary>
+            Gets the entity by id.
+            </summary>
+            <param name="id">The id.</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfRepositoryBase`2.GetAll">
+            <summary>
+            Returns all the entities of type TModel.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfRepositoryBase`2.GetCount">
+            <summary>
+            Gets the count.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfRepositoryBase`2.SaveChanges">
+            <summary>
+            Saves (commits) the changes to the data store.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfRepositoryBase`2.Update(`0)">
+            <summary>
+            Updates the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <remarks></remarks>
+        </member>
+        <member name="T:SS.Data.EntityFramework.EfRepositoryBase`1">
+            <summary>
+            Represents a generic Entity Framework repository for entities of type <see cref="!:TEntity"/>.
+            </summary>
+            <typeparam name="TEntity">The type of entity.</typeparam>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfRepositoryBase`1.#ctor(SS.Data.EntityFramework.IWorkspace)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Data.EntityFramework.EfRepositoryBase`1"/> class.
+            </summary>
+            <param name="workspace">The workspace.</param>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfWorkspace.#ctor(System.Data.Entity.DbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Data.EntityFramework.EfWorkspace"/> class.
+            </summary>
+            <param name="context">The database context.</param>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfWorkspace.Add``1(``0)">
+            <summary>
+            Adds the specified entity.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfWorkspace.Delete``1(``0)">
+            <summary>
+            Deletes the specified entity.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfWorkspace.SaveChanges">
+            <summary>
+            Commits the changes to the data store.
+            </summary>
+            <returns>The number of objects written to the underlying database.</returns>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfWorkspace.Update``1(``0)">
+            <summary>
+            Updates the specified entity.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfWorkspace.QueryInternal``1">
+            <summary>
+            Internal implementation of an entity query.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <returns>An <see cref="T:System.Linq.IQueryable`1"/>.</returns>
+        </member>
+        <member name="P:SS.Data.EntityFramework.EfWorkspaceBase.ObjectContext">
+            <summary>
+            Gets the object context.
+            </summary>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfWorkspaceBase.ExecuteCommand(System.String,System.Object[])">
+            <summary>
+            Executes the given DDL/DML command against the database.
+            </summary>
+            <param name="sql">The command string.</param>
+            <param name="parameters">The parameters to apply to the command string.</param>
+            <returns>The result returned by the database after executing the command.</returns>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfWorkspaceBase.Query``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}}[])">
+            <summary>
+            Returns a query using the specified predicate.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="predicate">The predicate.</param>
+            <param name="includes">The include expressions.</param>
+        </member>
+        <member name="M:SS.Data.EntityFramework.EfWorkspaceBase.SqlQuery``1(System.String,System.Object[])">
+            <summary>
+            Creates a raw SQL query that will return elements of the given generic type. The type
+            can be any type that has properties that match the names of the columns returned from
+            the query, or can be a simple primitive type. The type does not have to be an entity
+            type. The results of this query are never tracked by the context even if the type of
+            object returned is an entity type.
+            </summary>
+            <typeparam name="TEntity">The type of object returned by the query.</typeparam>
+            <param name="sql">The SQL query string.</param>
+            <param name="parameters">The parameters to apply to the SQL query string.</param>
+            <returns>
+            A System.Collections.Generic.IEnumerable&lt;TEntity&gt; object that will execute the
+            query when it is enumerated.
+            </returns>
+        </member>
+        <member name="M:SS.Data.EntityFramework.IWorkspaceBase.ExecuteCommand(System.String,System.Object[])">
+            <summary>
+            Executes the given DDL/DML command against the database.
+            </summary>
+            <param name="sql">The command string.</param>
+            <param name="parameters">The parameters to apply to the command string.</param>
+            <returns>The result returned by the database after executing the command.</returns>
+        </member>
+        <member name="M:SS.Data.EntityFramework.IWorkspaceBase.ExecuteCommandAsync(System.String,System.Threading.CancellationToken,System.Object[])">
+            <summary>
+            Asynchronously executes the given DDL/DML command against the database. 
+            As with any API that accepts SQL it is important to parameterize any user
+            input to protect against a SQL injection attack. You can include parameter
+            place holders in the SQL query string and then supply parameter values as
+            additional arguments. Any parameter values you supply will automatically
+            be converted to a DbParameter.  context.Database.ExecuteSqlCommandAsync("UPDATE
+            dbo.Posts SET Rating = 5 WHERE Author = @p0", userSuppliedAuthor); Alternatively,
+            you can also construct a DbParameter and supply it to SqlQuery. This allows
+            you to use named parameters in the SQL query string.  context.Database.ExecuteSqlCommandAsync("UPDATE
+            dbo.Posts SET Rating = 5 WHERE Author = @author", new SqlParameter("@author",
+            userSuppliedAuthor));
+            </summary>
+            <param name="sql">The command string.</param>
+            <param name="cancellationToken">A System.Threading.CancellationToken to observe while waiting for the task to complete.</param>
+            <param name="parameters">The parameters to apply to the command string.</param>
+            <returns>A task that represents the asynchronous operation.  The task result contains 
+            the result returned by the database after executing the command.</returns>
+            <remarks>Multiple active operations on the same context instance are not supported.
+            Use 'await' to ensure that any asynchronous operations have completed before
+            calling another method on this context.  If there isn't an existing local
+            transaction a new transaction will be used to execute the command.</remarks>
+        </member>
+        <member name="M:SS.Data.EntityFramework.IWorkspaceBase.Query``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}}[])">
+            <summary>
+            Returns a query using the specified predicate.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="predicate">The predicate.</param>
+            <param name="includes">The include expressions.</param>
+        </member>
+        <member name="M:SS.Data.EntityFramework.IWorkspaceBase.SqlQuery``1(System.String,System.Object[])">
+            <summary>
+            Creates a raw SQL query that will return elements of the given generic type. The type
+            can be any type that has properties that match the names of the columns returned from
+            the query, or can be a simple primitive type. The type does not have to be an entity
+            type. The results of this query are never tracked by the context even if the type of
+            object returned is an entity type.
+            </summary>
+            <typeparam name="TEntity">The type of object returned by the query.</typeparam>
+            <param name="sql">The SQL query string.</param>
+            <param name="parameters">The parameters to apply to the SQL query string.</param>
+            <returns>
+            A System.Collections.Generic.IEnumerable&lt;TEntity&gt; object that will execute the
+            query when it is enumerated.
+            </returns>
+        </member>
+        <member name="M:SS.Data.EntityFramework.ReadOnlyEfWorkspace.QueryInternal``1">
+            <summary>
+            Internal implementation of an entity query.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <returns>An <see cref="T:System.Linq.IQueryable`1"/>.</returns>
+        </member>
+        <member name="M:SS.Data.EntityFramework.WorkspaceAsyncExtensions.CountAsync``1(SS.Data.EntityFramework.IWorkspaceBase,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Returns the count of the given entity using the specified condition.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="workspace">The <see cref="T:SS.Data.EntityFramework.IWorkspace"/> instance.</param>
+            <param name="predicate">The predicate.</param>
+        </member>
+        <member name="M:SS.Data.EntityFramework.WorkspaceAsyncExtensions.CountAsync``1(SS.Data.EntityFramework.IWorkspaceBase,System.Threading.CancellationToken,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Returns the count of the given entity using the specified condition.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="workspace">The <see cref="T:SS.Data.EntityFramework.IWorkspace"/> instance.</param>
+            <param name="cancellationToken">
+            A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for the
+            task to complete.
+            </param>
+            <param name="predicate">The predicate.</param>
+        </member>
+        <member name="M:SS.Data.EntityFramework.WorkspaceAsyncExtensions.FirstAsync``2(SS.Data.EntityFramework.IWorkspaceBase,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Gets the first entity in the set ordering by the specified property.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <typeparam name="TProperty"></typeparam>
+        </member>
+        <member name="M:SS.Data.EntityFramework.WorkspaceAsyncExtensions.FirstAsync``2(SS.Data.EntityFramework.IWorkspaceBase,System.Threading.CancellationToken,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Gets the first entity in the set ordering by the specified property.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <typeparam name="TProperty"></typeparam>
+        </member>
+        <member name="M:SS.Data.EntityFramework.WorkspaceExtensions.Add``1(SS.Data.EntityFramework.IWorkspace,System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds the specified entities.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="workspace">The <see cref="T:SS.Data.EntityFramework.IWorkspace"/> instance.</param>
+            <param name="entities">The entities to be added.</param>
+        </member>
+        <member name="M:SS.Data.EntityFramework.WorkspaceExtensions.Count``1(SS.Data.EntityFramework.IWorkspaceBase,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Returns the count of the given entity using the specified condition.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="workspace">The <see cref="T:SS.Data.EntityFramework.IWorkspace"/> instance.</param>
+            <param name="predicate">The predicate.</param>
+        </member>
+        <member name="M:SS.Data.EntityFramework.WorkspaceExtensions.Count``1(SS.Data.EntityFramework.IWorkspaceBase)">
+            <summary>
+            Returns the count of the given entity.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="workspace">The <see cref="T:SS.Data.EntityFramework.IWorkspace"/> instance.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="workspace" /> is <c>null</c>
+            </exception>
+        </member>
+        <member name="M:SS.Data.EntityFramework.WorkspaceExtensions.Delete``1(SS.Data.EntityFramework.IWorkspace,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Deletes the entity specified in the expression.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="workspace">The <see cref="T:SS.Data.EntityFramework.IWorkspace"/> instance.</param>
+            <param name="predicate">The expression.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="workspace" /> or <paramref name="predicate" /> is <c>null</c>
+            </exception>
+        </member>
+        <member name="M:SS.Data.EntityFramework.WorkspaceExtensions.Delete``1(SS.Data.EntityFramework.IWorkspace,System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Deletes the specified entities.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="workspace">The <see cref="T:SS.Data.EntityFramework.IWorkspace"/> instance.</param>
+            <param name="entities">The entities to be deleted.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="workspace" /> or <paramref name="entities" /> is <c>null</c>
+            </exception>
+        </member>
+        <member name="M:SS.Data.EntityFramework.WorkspaceExtensions.First``2(SS.Data.EntityFramework.IWorkspaceBase,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Gets the first entity in the set ordering by the specified property.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <typeparam name="TProperty">The order property type.</typeparam>
+            <param name="workspace">The <see cref="T:SS.Data.EntityFramework.IWorkspace"/> instance.</param>
+            <param name="orderSelector">A function to extract a key from an element.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="workspace" /> or <paramref name="orderSelector" /> is <c>null</c>
+            </exception>
+        </member>
+        <member name="M:SS.Data.EntityFramework.WorkspaceExtensions.Last``2(SS.Data.EntityFramework.IWorkspaceBase,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Gets the last entity in the set ordering by the specified property.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <typeparam name="TProperty">The order property type.</typeparam>
+            <param name="workspace">The <see cref="T:SS.Data.EntityFramework.IWorkspace"/> instance.</param>
+            <param name="orderSelector">A function to extract a key from an element.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="workspace" /> or <paramref name="orderSelector" /> is <c>null</c>
+            </exception>
+        </member>
+        <member name="M:SS.Data.EntityFramework.WorkspaceExtensions.Query``1(SS.Data.EntityFramework.IWorkspaceBase,System.Linq.Expressions.Expression{System.Func{``0,System.Object}}[])">
+            <summary>
+            Returns a query without a predicate
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="workspace">The <see cref="T:SS.Data.EntityFramework.IWorkspace"/> instance.</param>
+            <param name="includes">The include expressions.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="workspace" /> is <c>null</c>
+            </exception>
+        </member>
+        <member name="M:SS.Data.EntityFramework.WorkspaceExtensions.Single``1(SS.Data.EntityFramework.IWorkspaceBase,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}}[])">
+            <summary>
+            Gets a single entity specified by the expression and includes the properties especified
+            in the expressions.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="workspace">The <see cref="T:SS.Data.EntityFramework.IWorkspace"/> instance.</param>
+            <param name="predicate">The expression.</param>
+            <param name="includes">The include expressions.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="workspace" /> or <paramref name="predicate" /> is <c>null</c>
+            </exception>
+        </member>
+        <member name="T:SS.Data.EntityFramework.IEfRepository`2">
+            <summary>
+            Represents a generic Entity Framework repository for entities of type <see cref="!:TEntity"/>.
+            </summary>
+            <typeparam name="TEntity">The type of entity.</typeparam>
+            <typeparam name="TKey">The type of the entity's unique identifier.</typeparam>
+        </member>
+        <member name="P:SS.Data.EntityFramework.IEfRepository`2.EnableTracking">
+            <summary>
+            Gets or sets a value indicating whether object tracking is enabled.
+            </summary>
+            <value><c>true</c> if object tracking is enabled; otherwise, <c>false</c>.</value>
+            <remarks></remarks>
+        </member>
+        <member name="M:SS.Data.EntityFramework.IEfRepository`2.GetCount">
+            <summary>
+            Gets the count.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:SS.Data.EntityFramework.IEfRepository`2.SaveChanges">
+            <summary>
+            Saves (commits) the changes to the data store.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:SS.Data.EntityFramework.IEfRepository`1">
+            <summary>
+            Represents a generic Entity Framework repository for entities of type <see cref="!:TEntity"/>.
+            </summary>
+            <typeparam name="TEntity">The type of entity.</typeparam>
+        </member>
+        <member name="T:SS.Data.EntityFramework.IWorkspace">
+            <summary>
+            Abstracts the use of persistence frameworks and the implementation of the unit of work pattern.
+            </summary>
+        </member>
+        <member name="M:SS.Data.EntityFramework.IWorkspace.Add``1(``0)">
+            <summary>
+            Adds the specified entity.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:SS.Data.EntityFramework.IWorkspace.AddSafe``1(``0)">
+            <summary>
+            Adds the specified entity, ignoring it if has already been added.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:SS.Data.EntityFramework.IWorkspace.Delete``1(``0)">
+            <summary>
+            Deletes the specified entity.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:SS.Data.EntityFramework.IWorkspace.SaveChanges">
+            <summary>
+            Commits the changes to the data store.
+            </summary>
+            <returns>The number of objects written to the underlying database.</returns>
+        </member>
+        <member name="M:SS.Data.EntityFramework.IWorkspace.SaveChangesAsync(System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously saves all changes made in this context to the underlying database.
+            </summary>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task 
+            to complete.</param>
+            <returns>A task that represents the asynchronous save operation.  The task result
+            contains the number of state entries written to the underlying database.
+            This can include state entries for entities and/or relationships. Relationship
+            state entries are created for many-to-many relationships and relationships
+            where there is no foreign key property included in the entity class (often
+            referred to as independent associations).</returns>
+        </member>
+        <member name="M:SS.Data.EntityFramework.IWorkspace.Update``1(``0)">
+            <summary>
+            Updates the specified entity.
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="T:SS.Data.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SS.Data.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SS.Data.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:SS.Data.Properties.Resources.InvalidPageNumber">
+            <summary>
+              Looks up a localized string similar to Page number must be greater than zero..
+            </summary>
+        </member>
+        <member name="P:SS.Data.Properties.Resources.InvalidPageSize">
+            <summary>
+              Looks up a localized string similar to Page size must be greater than 0..
+            </summary>
+        </member>
+        <member name="P:SS.Data.Properties.Resources.NotAllowInReadOnlyMode">
+            <summary>
+              Looks up a localized string similar to Operation is not allowed when in read only mode..
+            </summary>
+        </member>
+    </members>
+</doc>

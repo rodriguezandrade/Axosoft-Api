@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SS.Web</name>
+    </assembly>
+    <members>
+        <member name="T:SS.Web.Caching.WebApplicationCache">
+            <summary>
+            Implements the cache for a Web application.
+            </summary>
+        </member>
+        <member name="M:SS.Web.Caching.WebApplicationCache.#ctor(System.Web.HttpContextBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Web.Caching.WebApplicationCache"/> class.
+            </summary>
+            <param name="context">The context.</param>
+            <exception cref="T:System.ArgumentNullException">context</exception>
+        </member>
+        <member name="P:SS.Web.Caching.WebApplicationCache.DefaultExpiration">
+            <summary>
+            Gets the default expiration value.
+            </summary>
+        </member>
+        <member name="M:SS.Web.Caching.WebApplicationCache.Add``1(System.String,``0,System.TimeSpan)">
+            <summary>
+            Adds the specified value.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+            <param name="expiration">The expiration.</param>
+        </member>
+        <member name="M:SS.Web.Caching.WebApplicationCache.Clear">
+            <summary>
+            Clears the cache.
+            </summary>
+        </member>
+        <member name="M:SS.Web.Caching.WebApplicationCache.Exists(System.String)">
+            <summary>
+            Checks if a value with the specified key exists.
+            </summary>
+            <param name="key">The key.</param>
+        </member>
+        <member name="M:SS.Web.Caching.WebApplicationCache.Get``1(System.String,``0@)">
+            <summary>
+            Gets the value of the specified key.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:SS.Web.Caching.WebApplicationCache.Remove(System.String)">
+            <summary>
+            Removes the item with the specified key.
+            </summary>
+            <param name="key">The key.</param>
+        </member>
+        <member name="T:SS.Web.Caching.WebSessionCache">
+            <summary>
+            Provides access to session-state values.
+            </summary>
+        </member>
+        <member name="M:SS.Web.Caching.WebSessionCache.#ctor(System.Web.HttpSessionStateBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Web.Caching.WebSessionCache"/> class.
+            </summary>
+            <param name="session">The session object to use.</param>
+            <exception cref="T:System.ArgumentNullException">session</exception>
+        </member>
+        <member name="M:SS.Web.Caching.WebSessionCache.#ctor(System.Web.HttpContextBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Web.Caching.WebSessionCache"/> class.
+            </summary>
+            <param name="context">The <see cref="T:System.Web.HttpContextBase"/> object that contains the session object to use.</param>
+            <exception cref="T:System.ArgumentNullException">context</exception>
+            <exception cref="T:System.InvalidOperationException">Session state is not enabled. If running Web API, make sure you call Context.SetSessionStateBehavior(SessionStateBehavior.Required)
+            on the Application_PostAuthorizeRequest event of the current <see cref="T:System.Web.HttpApplication"/> instance.</exception>
+        </member>
+        <member name="P:SS.Web.Caching.WebSessionCache.DefaultExpiration">
+            <summary>
+            Gets the default expiration value.
+            </summary>
+        </member>
+        <member name="M:SS.Web.Caching.WebSessionCache.Clear">
+            <summary>
+            Clears the cache.
+            </summary>
+        </member>
+        <member name="M:SS.Web.Caching.WebSessionCache.Exists(System.String)">
+            <summary>
+            Checks if a value with the specified key exists.
+            </summary>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SS.Web.Caching.WebSessionCache.Remove(System.String)">
+            <summary>
+            Removes the item with the specified key.
+            </summary>
+            <param name="key">The key.</param>
+        </member>
+        <member name="T:SS.Web.HttpExceptionWrapper">
+            <summary>
+            Wraps a <see cref="T:System.Exception" /> and provides extra contextual information.
+            </summary>
+        </member>
+        <member name="M:SS.Web.HttpExceptionWrapper.#ctor(System.Web.HttpContextBase,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SS.Web.HttpExceptionWrapper"/> class.
+            </summary>
+            <param name="context">The HTTP context.</param>
+            <param name="exception">The original exception.</param>
+            <exception cref="T:System.ArgumentNullException">
+            context or exception is <c>null</c>
+            </exception>
+        </member>
+        <member name="P:SS.Web.HttpExceptionWrapper.Browser">
+            <summary>
+            Gets the client's browser string.
+            </summary>
+        </member>
+        <member name="P:SS.Web.HttpExceptionWrapper.BrowserVersion">
+            <summary>
+            Gets the client's browser version.
+            </summary>
+        </member>
+        <member name="P:SS.Web.HttpExceptionWrapper.Data">
+            <summary>
+            Gets a collection of key/value pairs that provide additional user-defined information about the exception.
+            </summary>
+            <returns>
+            An object that implements the System.Collections.IDictionary interface and
+            contains a collection of user-defined key/value pairs. The default is an empty collection.
+            </returns>
+        </member>
+        <member name="P:SS.Web.HttpExceptionWrapper.HelpLink">
+            <summary>
+            Gets or sets a link to the help file associated with this exception.
+            </summary>
+        </member>
+        <member name="P:SS.Web.HttpExceptionWrapper.InnerException">
+            <summary>
+            Gets the <see cref="T:System.Exception" /> instance that caused the current exception.
+            </summary>
+        </member>
+        <member name="P:SS.Web.HttpExceptionWrapper.Message">
+            <summary>
+            Gets a message that describes the current exception.
+            </summary>
+        </member>
+        <member name="P:SS.Web.HttpExceptionWrapper.RequestType">
+            <summary>
+            Gets the type of HTTP request.
+            </summary>
+        </member>
+        <member name="P:SS.Web.HttpExceptionWrapper.Source">
+            <summary>
+            Gets or sets the name of the application or the object that causes the error.
+            </summary>
+        </member>
+        <member name="P:SS.Web.HttpExceptionWrapper.StackTrace">
+            <summary>
+            Gets a string representation of the immediate frames on the call stack.
+            </summary>
+            <PermissionSet>
+              <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" PathDiscovery="*AllFiles*" />
+            </PermissionSet>
+        </member>
+        <member name="P:SS.Web.HttpExceptionWrapper.Url">
+            <summary>
+            Gets the request URL.
+            </summary>
+            <value>
+            The URL.
+            </value>
+        </member>
+        <member name="P:SS.Web.HttpExceptionWrapper.UserAgent">
+            <summary>
+            Gets the client's user agent string.
+            </summary>
+        </member>
+        <member name="P:SS.Web.HttpExceptionWrapper.UserHostAddress">
+            <summary>
+            Gets the client's host address.
+            </summary>
+        </member>
+        <member name="P:SS.Web.HttpExceptionWrapper.UserId">
+            <summary>
+            Gets the logged in user identifier, if any.
+            </summary>
+            <value>
+            The user identifier.
+            </value>
+        </member>
+        <member name="M:SS.Web.HttpExceptionWrapper.GetBaseException">
+            <summary>
+            When overridden in a derived class, returns the <see cref="T:System.Exception" /> that is the root cause of one or more subsequent exceptions.
+            </summary>
+            <returns>
+            The first exception thrown in a chain of exceptions. If the <see cref="P:System.Exception.InnerException" /> property of the current exception is a null reference (Nothing in Visual Basic), this property returns the current exception.
+            </returns>
+        </member>
+    </members>
+</doc>

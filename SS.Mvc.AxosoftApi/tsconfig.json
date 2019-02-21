@@ -1,0 +1,21 @@
+﻿{
+    "compilerOptions": {
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "module": "commonjs",
+        "noEmitOnError": true,
+        "noImplicitAny": false,
+        "outDir": "node_modules/_typescriptOutput",
+        "removeComments": false,
+        "sourceMap": true,
+        "target": "es6",
+        "moduleResolution": "node"
+    },
+    "exclude": [
+        "node_modules",
+        "typings/index",
+        "typings/index.d.ts",
+        "typings/globals/core-js/index",
+        "typings/globals/core-js/index.d.ts"
+    ]
+}
